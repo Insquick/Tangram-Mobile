@@ -18,7 +18,7 @@
       padding: 0;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start; /* Align content to the top */
       min-height: 100vh;
       overflow: hidden;
       position: relative;
@@ -50,6 +50,9 @@
       max-width: 800px;
       width: 90%; /* Responsive width */
       position: relative;
+      margin: 1rem auto; /* Add margin for spacing */
+      overflow-y: auto; /* Make container scrollable */
+      max-height: 90vh; /* Limit height to viewport */
     }
 
     h1 {
@@ -170,9 +173,9 @@
       border-radius: 10px;
       cursor: pointer;
       transition: background 0.3s ease;
-      position: absolute; /* Position the button absolutely */
-      bottom: 1rem; /* Position at the bottom */
-      right: 1rem; /* Position at the right */
+      margin-top: 1rem; /* Add margin to separate from dropdowns */
+      width: 100%; /* Full width for mobile */
+      max-width: 200px; /* Limit width */
     }
 
     #start-button:hover {
@@ -330,8 +333,8 @@
       top: 20%; /* Adjusted to position lower */
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 150px; /* Smaller GIF for mobile */
-      height: 150px;
+      width: 250px; /* Bigger GIF for mobile */
+      height: 250px;
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
@@ -357,8 +360,8 @@
       }
 
       .gif-animation {
-        width: 120px; /* Smaller GIF for mobile */
-        height: 120px;
+        width: 200px; /* Bigger GIF for mobile */
+        height: 200px;
       }
     }
 
@@ -376,8 +379,8 @@
       }
 
       .gif-animation {
-        width: 100px; /* Even smaller GIF for very small devices */
-        height: 100px;
+        width: 180px; /* Bigger GIF for very small devices */
+        height: 180px;
       }
     }
   </style>
@@ -777,6 +780,11 @@
       if (existingGif) existingGif.remove();
     }
 
+    // End game button
+    document.getElementById('end-game-button').addEventListener('click', announceWinner);
+  </script>
+</body>
+</html>
     // End game button
     document.getElementById('end-game-button').addEventListener('click', announceWinner);
   </script>
