@@ -16,7 +16,7 @@
       padding: 0;
       display: flex;
       justify-content: center;
-      align-items: flex-start; /* Changed to flex-start to allow scrolling */
+      align-items: center; /* Center content vertically */
       min-height: 100vh;
       overflow-y: auto; /* Enable vertical scrolling */
       position: relative;
@@ -277,7 +277,7 @@
     /* GIF Animation Styling */
     .gif-animation {
       position: fixed; /* Changed to fixed to avoid overlapping */
-      bottom: 20px; /* Positioned at the bottom */
+      top: 20px; /* Positioned at the top */
       left: 50%; /* Centered horizontally */
       transform: translateX(-50%); /* Center the GIF */
       width: 150px; /* Smaller GIF size */
@@ -286,6 +286,31 @@
       background-repeat: no-repeat;
       background-position: center;
       z-index: 1000; /* Ensure it's above other elements */
+    }
+
+    /* Announcement Styling */
+    .winner-announcement {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #ffffff;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .score-list {
+      text-align: left;
+      margin: 2rem auto; /* Increased margin for more spacing */
+      max-width: 300px;
+      font-size: 1.2rem;
+    }
+
+    .score-list ul {
+      list-style-type: none; /* Remove default bullet points */
+      padding-left: 0; /* Remove default padding */
+    }
+
+    .score-list li {
+      margin: 0.5rem 0;
     }
   </style>
 </head>
