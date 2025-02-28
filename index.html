@@ -16,9 +16,9 @@
       padding: 0;
       display: flex;
       justify-content: center;
-      align-items: center; /* Center content vertically */
+      align-items: center;
       min-height: 100vh;
-      overflow-y: auto; /* Enable vertical scrolling */
+      overflow-y: auto;
       position: relative;
     }
 
@@ -41,31 +41,31 @@
 
     .container {
       background: #2c2c2c;
-      padding: 1rem; /* Reduced padding for mobile */
+      padding: 1rem;
       border-radius: 15px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
       text-align: center;
-      max-width: 90%; /* Adjusted for mobile */
+      max-width: 90%;
       width: 100%;
       position: relative;
-      margin: 2rem 0; /* Added margin to ensure content doesn't touch the edges */
-      z-index: 1; /* Ensure the container is above the GIFs */
+      margin: 2rem 0;
+      z-index: 1;
     }
 
     h1 {
-      font-size: 2rem; /* Smaller font size for mobile */
+      font-size: 2rem;
       margin-bottom: 1rem;
     }
 
     /* Setup Section */
     #setup {
-      margin-bottom: 1rem; /* Reduced margin for mobile */
+      margin-bottom: 1rem;
     }
 
     #setup label {
       display: block;
       margin: 0.5rem 0;
-      font-size: 1rem; /* Smaller font size for mobile */
+      font-size: 1rem;
     }
 
     #setup input, #setup select {
@@ -75,8 +75,8 @@
       border-radius: 5px;
       border: none;
       margin-bottom: 1rem;
-      width: 100%; /* Full width for mobile */
-      max-width: 100%; /* Ensure inputs don't overflow */
+      width: 100%;
+      max-width: 100%;
     }
 
     #start-button {
@@ -88,8 +88,8 @@
       border-radius: 10px;
       cursor: pointer;
       transition: background 0.3s ease;
-      width: 100%; /* Full width for mobile */
-      margin-top: 1rem; /* Added margin for spacing */
+      width: 100%;
+      margin-top: 1rem;
     }
 
     #start-button:hover {
@@ -102,32 +102,32 @@
     }
 
     #timer {
-      font-size: 1.5rem; /* Smaller font size for mobile */
+      font-size: 1.5rem;
       font-weight: bold;
       margin: 1rem 0;
     }
 
     #times-up-message {
       display: none;
-      font-size: 2.5rem; /* Larger font size */
+      font-size: 2.5rem;
       font-weight: bold;
       color: #ff0000;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
       position: absolute;
-      top: 50%; /* Center vertically */
-      left: 50%; /* Center horizontally */
-      transform: translate(-50%, -50%); /* Center the message */
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       z-index: 1000;
-      white-space: nowrap; /* Ensure it stays in one line */
+      white-space: nowrap;
     }
 
     .puzzle-container {
-      margin: 1rem 0; /* Reduced margin for mobile */
+      margin: 1rem 0;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 1rem;
-      position: relative; /* Ensure the silhouette is positioned relative */
+      position: relative;
     }
 
     .silhouette {
@@ -138,12 +138,12 @@
       position: relative;
       background: #3e3e3e;
       padding: 10px;
-      max-width: 90%; /* Adjusted for mobile */
+      max-width: 90%;
       width: 100%;
     }
 
     .silhouette:hover {
-      transform: translateY(-5px); /* Smaller hover effect for mobile */
+      transform: translateY(-5px);
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
     }
 
@@ -157,19 +157,19 @@
     /* Score Input Buttons */
     .score-input {
       display: flex;
-      gap: 0.5rem; /* Smaller gap for mobile */
+      gap: 0.5rem;
       margin-top: 1rem;
     }
 
     .score-input button {
-      padding: 0.8rem 1rem; /* Smaller padding for mobile */
+      padding: 0.8rem 1rem;
       font-size: 1rem;
       color: white;
       border: none;
       border-radius: 10px;
       cursor: pointer;
       transition: background 0.3s ease;
-      width: 100%; /* Full width for mobile */
+      width: 100%;
     }
 
     .score-input .correct {
@@ -191,19 +191,19 @@
     /* Team Display */
     #team-display {
       margin-top: 1rem;
-      font-size: 1rem; /* Smaller font size for mobile */
+      font-size: 1rem;
     }
 
     /* Round Counter */
     #round-counter {
-      font-size: 1.2rem; /* Smaller font size for mobile */
+      font-size: 1.2rem;
       margin: 1rem 0;
     }
 
     /* End Game Button */
     #end-game-button {
       margin-top: 1rem;
-      padding: 0.8rem 1rem; /* Smaller padding for mobile */
+      padding: 0.8rem 1rem;
       font-size: 1rem;
       color: white;
       background: #e74c3c;
@@ -211,7 +211,7 @@
       border-radius: 10px;
       cursor: pointer;
       transition: background 0.3s ease;
-      width: 100%; /* Full width for mobile */
+      width: 100%;
     }
 
     #end-game-button:hover {
@@ -221,7 +221,7 @@
     /* Reset Game Button */
     #reset-game-button {
       margin-top: 1rem;
-      padding: 0.8rem 1rem; /* Smaller padding for mobile */
+      padding: 0.8rem 1rem;
       font-size: 1rem;
       color: white;
       background: #3498db;
@@ -229,7 +229,7 @@
       border-radius: 10px;
       cursor: pointer;
       transition: background 0.3s ease;
-      width: 100%; /* Full width for mobile */
+      width: 100%;
       display: none;
     }
 
@@ -240,27 +240,27 @@
     /* Responsive Design */
     @media (max-width: 480px) {
       h1 {
-        font-size: 1.5rem; /* Even smaller font size for very small devices */
+        font-size: 1.5rem;
       }
 
       #setup label {
-        font-size: 0.9rem; /* Smaller font size for very small devices */
+        font-size: 0.9rem;
       }
 
       #setup input, #setup select {
-        font-size: 0.9rem; /* Smaller font size for very small devices */
+        font-size: 0.9rem;
       }
 
       #start-button, #end-game-button, #reset-game-button {
-        font-size: 0.9rem; /* Smaller font size for very small devices */
+        font-size: 0.9rem;
       }
 
       .silhouette {
-        max-width: 100%; /* Full width for very small devices */
+        max-width: 100%;
       }
 
       .score-input button {
-        padding: 0.6rem 0.8rem; /* Smaller padding for very small devices */
+        padding: 0.6rem 0.8rem;
       }
     }
 
@@ -277,28 +277,6 @@
     .purple { color: #9b59b6; }
     .orange { color: #e67e22; }
 
-    /* GIF Animation Styling */
-    .gif-animation {
-      position: fixed; /* Fixed to the background */
-      z-index: 0; /* Ensure it's behind the main content */
-      width: 150px; /* Smaller GIF size */
-      height: 150px;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-    }
-
-    /* Position the GIFs like stickers on a wall */
-    .gif-animation.tie {
-      top: 20px; /* Position at the top */
-      left: 20px; /* Position at the left */
-    }
-
-    .gif-animation.winner {
-      top: 20px; /* Position at the top */
-      right: 20px; /* Position at the right */
-    }
-
     /* Announcement Styling */
     .winner-announcement {
       font-size: 2.5rem;
@@ -306,22 +284,39 @@
       color: #ffffff;
       margin-bottom: 1rem;
       text-align: center;
+      position: relative;
+      z-index: 100;
     }
 
     .score-list {
       text-align: left;
-      margin: 2rem auto; /* Increased margin for more spacing */
+      margin: 2rem auto;
       max-width: 300px;
       font-size: 1.2rem;
     }
 
     .score-list ul {
-      list-style-type: none; /* Remove default bullet points */
-      padding-left: 0; /* Remove default padding */
+      list-style-type: none;
+      padding-left: 0;
     }
 
     .score-list li {
       margin: 0.5rem 0;
+    }
+
+    /* GIF Animation Styling */
+    .gif-animation {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 200px; /* Adjust size as needed */
+      height: 200px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      z-index: 1000; /* Ensure it's above the announcement */
+      pointer-events: none; /* Prevent interaction with the GIF */
     }
   </style>
 </head>
@@ -331,10 +326,6 @@
 
   <!-- Audio for Time's Up sound -->
   <audio id="times-up-sound" src="times-up-sound.mp3"></audio>
-
-  <!-- GIFs as background stickers -->
-  <div class="gif-animation tie"></div>
-  <div class="gif-animation winner"></div>
 
   <div class="container">
     <h1 id="game-title">Tangram Challenge</h1>
@@ -393,18 +384,18 @@
   <script>
     // Game data
     const puzzles = [
-      { silhouette: "kouti.png", color: "puzzle.png" }, // First puzzle
-      { silhouette: "Snapshot_2.png", color: "lol.png" }, // Second puzzle
+      { silhouette: "kouti.png", color: "puzzle.png" },
+      { silhouette: "Snapshot_2.png", color: "lol.png" },
     ];
 
     const teamColors = ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"];
-    const teamScores = [0, 0, 0, 0, 0, 0]; // Scores for each team
+    const teamScores = [0, 0, 0, 0, 0, 0];
     let currentPuzzleIndex = 0;
     let currentTeamIndex = 0;
     let currentRound = 1;
-    let totalRounds = 5; // Default number of rounds
+    let totalRounds = 5;
     let timeLeft = 60;
-    let timerDuration = 1; // Default timer duration in minutes
+    let timerDuration = 1;
     let timerInterval;
     const timerElement = document.getElementById('timer');
     const timesUpMessage = document.getElementById('times-up-message');
@@ -421,10 +412,10 @@
     const puzzleContainer = document.querySelector('.puzzle-container');
     const endGameButton = document.getElementById('end-game-button');
     const startButton = document.getElementById('start-button');
-    let numberOfTeams = 1; // Default number of teams
-    let celebrationInterval; // Interval for repeating confetti
-    let tieGifIndex = 0; // Index for tie GIFs
-    let winnerGifIndex = 0; // Index for winner GIFs
+    let numberOfTeams = 1;
+    let celebrationInterval;
+    let tieGifIndex = 0;
+    let winnerGifIndex = 0;
 
     // Tie GIFs
     const tieGifs = ["t1.gif", "t2.gif", "t3.gif", "t4.gif"];
@@ -437,53 +428,38 @@
       const currentTeam = teamColors[currentTeamIndex];
       let teamColor = "";
 
-      // Manually set the team color based on the current team
-      if (currentTeam === "Red") {
-        teamColor = "#e74c3c"; // Red
-      } else if (currentTeam === "Blue") {
-        teamColor = "#3498db"; // Blue
-      } else if (currentTeam === "Yellow") {
-        teamColor = "#f1c40f"; // Yellow
-      } else if (currentTeam === "Green") {
-        teamColor = "#2ecc71"; // Green
-      } else if (currentTeam === "Purple") {
-        teamColor = "#9b59b6"; // Purple
-      } else if (currentTeam === "Orange") {
-        teamColor = "#e67e22"; // Orange
-      }
+      if (currentTeam === "Red") teamColor = "#e74c3c";
+      else if (currentTeam === "Blue") teamColor = "#3498db";
+      else if (currentTeam === "Yellow") teamColor = "#f1c40f";
+      else if (currentTeam === "Green") teamColor = "#2ecc71";
+      else if (currentTeam === "Purple") teamColor = "#9b59b6";
+      else if (currentTeam === "Orange") teamColor = "#e67e22";
 
-      // Update the team display text and color
       currentTeamDisplay.textContent = currentTeam;
       currentTeamDisplay.style.color = teamColor;
-
-      // Update the "Tangram Challenge" title and "Round: X/Y" text color
       gameTitle.style.color = teamColor;
       roundCounter.style.color = teamColor;
     }
 
     // Start the game
     function startGame() {
-      // Get user inputs
       timerDuration = parseInt(document.getElementById('timer-minutes').value, 10);
       numberOfTeams = parseInt(document.getElementById('teams').value, 10);
       totalRounds = parseInt(document.getElementById('rounds').value, 10);
 
-      // Initialize scores
-      teamScores.fill(0); // Reset scores
+      teamScores.fill(0);
       currentRound = 1;
       currentRoundDisplay.textContent = currentRound;
       totalRoundsDisplay.textContent = totalRounds;
 
-      // Hide setup and show game
       setupSection.style.display = "none";
       gameSection.style.display = "block";
-      resetGameButton.style.display = "none"; // Hide reset button initially
-      startButton.style.display = "none"; // Hide the start button
+      resetGameButton.style.display = "none";
+      startButton.style.display = "none";
 
-      // Initialize game
       currentTeamIndex = 0;
-      updateTeamDisplay(); // Update team display with the correct color
-      gameTitle.textContent = "Tangram Challenge"; // Reset title
+      updateTeamDisplay();
+      gameTitle.textContent = "Tangram Challenge";
       timeLeft = timerDuration * 60;
       startTimer();
     }
@@ -502,8 +478,8 @@
 
       if (timeLeft < 0) {
         clearInterval(timerInterval);
-        timesUpMessage.style.display = "block"; // Show time's up message
-        timesUpSound.play(); // Play the time's up sound
+        timesUpMessage.style.display = "block";
+        timesUpSound.play();
       }
     }
 
@@ -512,9 +488,8 @@
     silhouetteElement.addEventListener('click', () => {
       const colorImage = puzzles[currentPuzzleIndex].color;
       silhouetteElement.innerHTML = `<img src="${colorImage}" alt="Tangram Color">`;
-      clearInterval(timerInterval); // Stop the timer
+      clearInterval(timerInterval);
 
-      // Only show buttons if they don't already exist
       if (!document.querySelector('.score-input')) {
         showScoreInput();
       }
@@ -534,14 +509,14 @@
     // Handle score input
     function handleScoreInput(isCorrect) {
       if (isCorrect) teamScores[currentTeamIndex]++;
-      document.querySelector('.puzzle-container').lastElementChild.remove(); // Remove buttons
+      document.querySelector('.puzzle-container').lastElementChild.remove();
       nextRound();
     }
 
     // Move to the next round
     function nextRound() {
-      currentTeamIndex = (currentTeamIndex + 1) % numberOfTeams; // Use numberOfTeams instead of teamColors.length
-      updateTeamDisplay(); // Update team display with the correct color
+      currentTeamIndex = (currentTeamIndex + 1) % numberOfTeams;
+      updateTeamDisplay();
 
       if (currentTeamIndex === 0) {
         currentRound++;
@@ -555,7 +530,7 @@
 
       currentPuzzleIndex = (currentPuzzleIndex + 1) % puzzles.length;
       silhouetteElement.innerHTML = `<img src="${puzzles[currentPuzzleIndex].silhouette}" alt="Tangram Silhouette">`;
-      timesUpMessage.style.display = "none"; // Hide time's up message
+      timesUpMessage.style.display = "none";
       timeLeft = timerDuration * 60;
       startTimer();
     }
@@ -564,46 +539,34 @@
     function announceWinner() {
       clearInterval(timerInterval);
 
-      // Hide game elements
       roundCounter.classList.add('hide-on-end');
       teamDisplay.classList.add('hide-on-end');
       puzzleContainer.classList.add('hide-on-end');
       endGameButton.classList.add('hide-on-end');
       timerElement.classList.add('hide-on-end');
-      timesUpMessage.style.display = "none"; // Hide time's up message during announcement
+      timesUpMessage.style.display = "none";
 
-      // Determine the winner(s)
       const maxScore = Math.max(...teamScores);
       const winningTeams = teamColors
-        .slice(0, numberOfTeams) // Only consider selected teams
+        .slice(0, numberOfTeams)
         .filter((_, index) => teamScores[index] === maxScore);
 
-      // Display the winner or tie message
       if (winningTeams.length === 1) {
         const winningTeam = winningTeams[0];
         let announcementColor = "";
 
-        // Manually set the announcement color based on the winning team
-        if (winningTeam === "Red") {
-          announcementColor = "#e74c3c"; // Red
-        } else if (winningTeam === "Blue") {
-          announcementColor = "#3498db"; // Blue
-        } else if (winningTeam === "Yellow") {
-          announcementColor = "#f1c40f"; // Yellow
-        } else if (winningTeam === "Green") {
-          announcementColor = "#2ecc71"; // Green
-        } else if (winningTeam === "Purple") {
-          announcementColor = "#9b59b6"; // Purple
-        } else if (winningTeam === "Orange") {
-          announcementColor = "#e67e22"; // Orange
-        }
+        if (winningTeam === "Red") announcementColor = "#e74c3c";
+        else if (winningTeam === "Blue") announcementColor = "#3498db";
+        else if (winningTeam === "Yellow") announcementColor = "#f1c40f";
+        else if (winningTeam === "Green") announcementColor = "#2ecc71";
+        else if (winningTeam === "Purple") announcementColor = "#9b59b6";
+        else if (winningTeam === "Orange") announcementColor = "#e67e22";
 
         gameTitle.innerHTML = `
           <div class="winner-announcement">
             <span style="color: ${announcementColor}">${winningTeam} Won!</span>
           </div>
         `;
-        // Trigger winner GIF and confetti
         triggerCelebration(false);
       } else {
         gameTitle.innerHTML = `
@@ -611,17 +574,14 @@
             It's a Tie!
           </div>
         `;
-        // Trigger tie GIF
         triggerCelebration(true);
       }
 
-      // Sort teams by score (highest to lowest)
       const sortedTeams = teamColors
-        .slice(0, numberOfTeams) // Only consider selected teams
+        .slice(0, numberOfTeams)
         .map((team, index) => ({ team, score: teamScores[index] }))
         .sort((a, b) => b.score - a.score);
 
-      // Display all teams' scores in bullet points (sorted)
       const scoreList = sortedTeams
         .map(({ team, score }) => {
           let teamColor = "";
@@ -644,10 +604,8 @@
         `<div class="score-list"><ul>${scoreList}</ul></div>`
       );
 
-      // Show the Reset Game button
       resetGameButton.style.display = "block";
 
-      // Start repeating confetti every 10 seconds (only for wins)
       if (winningTeams.length === 1) {
         celebrationInterval = setInterval(() => {
           confetti({
@@ -661,16 +619,16 @@
 
     // Trigger celebration (winner or tie)
     function triggerCelebration(isTie) {
-      if (isTie) {
-        // Display tie GIF
-        const tieGif = tieGifs[tieGifIndex % tieGifs.length];
-        tieGifIndex++;
-        displayGif(tieGif, 'tie');
-      } else {
-        // Display winner GIF and confetti
-        const winnerGif = winnerGifs[winnerGifIndex % winnerGifs.length];
-        winnerGifIndex++;
-        displayGif(winnerGif, 'winner');
+      const gif = isTie ? tieGifs[tieGifIndex % tieGifs.length] : winnerGifs[winnerGifIndex % winnerGifs.length];
+      if (isTie) tieGifIndex++;
+      else winnerGifIndex++;
+
+      const gifElement = document.createElement('div');
+      gifElement.className = 'gif-animation';
+      gifElement.style.backgroundImage = `url('${gif}')`;
+      document.body.appendChild(gifElement);
+
+      if (!isTie) {
         confetti({
           particleCount: 100,
           spread: 70,
@@ -679,17 +637,8 @@
       }
     }
 
-    // Display GIF
-    function displayGif(gif, type) {
-      const gifElement = document.createElement('div');
-      gifElement.className = `gif-animation ${type}`;
-      gifElement.style.backgroundImage = `url('${gif}')`;
-      document.body.appendChild(gifElement);
-    }
-
     // Reset the game
     function resetGame() {
-      // Reset game state
       currentPuzzleIndex = 0;
       currentTeamIndex = 0;
       currentRound = 1;
@@ -697,27 +646,23 @@
       timerDuration = 1;
       teamScores.fill(0);
 
-      // Reset UI
       setupSection.style.display = "block";
       gameSection.style.display = "none";
-      resetGameButton.style.display = "none"; // Hide reset button
-      startButton.style.display = "block"; // Show the start button again
-      gameTitle.textContent = "Tangram Challenge"; // Reset title
-      gameTitle.style.color = "white"; // Reset title color
+      resetGameButton.style.display = "none";
+      startButton.style.display = "block";
+      gameTitle.textContent = "Tangram Challenge";
+      gameTitle.style.color = "white";
       silhouetteElement.innerHTML = `<img src="${puzzles[currentPuzzleIndex].silhouette}" alt="Tangram Silhouette">`;
 
-      // Show hidden elements
       roundCounter.classList.remove('hide-on-end');
       teamDisplay.classList.remove('hide-on-end');
       puzzleContainer.classList.remove('hide-on-end');
       endGameButton.classList.remove('hide-on-end');
       timerElement.classList.remove('hide-on-end');
-      timesUpMessage.style.display = "none"; // Ensure time's up message is hidden
+      timesUpMessage.style.display = "none";
 
-      // Clear celebration interval
       clearInterval(celebrationInterval);
 
-      // Remove any existing GIF
       const existingGif = document.querySelector('.gif-animation');
       if (existingGif) existingGif.remove();
     }
