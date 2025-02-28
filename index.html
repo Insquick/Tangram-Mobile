@@ -49,6 +49,7 @@
       width: 100%;
       position: relative;
       margin: 2rem 0; /* Added margin to ensure content doesn't touch the edges */
+      z-index: 1; /* Ensure the container is above the GIFs */
     }
 
     h1 {
@@ -278,16 +279,24 @@
 
     /* GIF Animation Styling */
     .gif-animation {
-      position: fixed; /* Changed to fixed to avoid overlapping */
-      top: 20px; /* Positioned at the top */
-      left: 50%; /* Centered horizontally */
-      transform: translateX(-50%); /* Center the GIF */
+      position: fixed; /* Fixed to the background */
+      z-index: 0; /* Ensure it's behind the main content */
       width: 150px; /* Smaller GIF size */
       height: 150px;
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
-      z-index: 1000; /* Ensure it's above other elements */
+    }
+
+    /* Position the GIFs like stickers on a wall */
+    .gif-animation.tie {
+      top: 20px; /* Position at the top */
+      left: 20px; /* Position at the left */
+    }
+
+    .gif-animation.winner {
+      top: 20px; /* Position at the top */
+      right: 20px; /* Position at the right */
     }
 
     /* Announcement Styling */
@@ -322,6 +331,10 @@
 
   <!-- Audio for Time's Up sound -->
   <audio id="times-up-sound" src="times-up-sound.mp3"></audio>
+
+  <!-- GIFs as background stickers -->
+  <div class="gif-animation tie"></div>
+  <div class="gif-animation winner"></div>
 
   <div class="container">
     <h1 id="game-title">Tangram Challenge</h1>
@@ -652,12 +665,12 @@
         // Display tie GIF
         const tieGif = tieGifs[tieGifIndex % tieGifs.length];
         tieGifIndex++;
-        displayGif(tieGif);
+        displayGif(tieGif, 'tie');
       } else {
         // Display winner GIF and confetti
         const winnerGif = winnerGifs[winnerGifIndex % winnerGifs.length];
         winnerGifIndex++;
-        displayGif(winnerGif);
+        displayGif(winnerGif, 'winner');
         confetti({
           particleCount: 100,
           spread: 70,
@@ -667,9 +680,9 @@
     }
 
     // Display GIF
-    function displayGif(gif) {
+    function displayGif(gif, type) {
       const gifElement = document.createElement('div');
-      gifElement.className = 'gif-animation';
+      gifElement.className = `gif-animation ${type}`;
       gifElement.style.backgroundImage = `url('${gif}')`;
       document.body.appendChild(gifElement);
     }
