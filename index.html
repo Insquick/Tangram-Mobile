@@ -16,9 +16,9 @@
       padding: 0;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start; /* Changed to flex-start to allow scrolling */
       min-height: 100vh;
-      overflow: hidden;
+      overflow-y: auto; /* Enable vertical scrolling */
       position: relative;
     }
 
@@ -48,6 +48,7 @@
       max-width: 90%; /* Adjusted for mobile */
       width: 100%;
       position: relative;
+      margin: 2rem 0; /* Added margin to ensure content doesn't touch the edges */
     }
 
     h1 {
@@ -275,10 +276,10 @@
 
     /* GIF Animation Styling */
     .gif-animation {
-      position: absolute;
-      top: 50%; /* Positioned in the middle vertically */
-      left: 50%; /* Positioned in the middle horizontally */
-      transform: translate(-50%, -50%); /* Center the GIF */
+      position: fixed; /* Changed to fixed to avoid overlapping */
+      bottom: 20px; /* Positioned at the bottom */
+      left: 50%; /* Centered horizontally */
+      transform: translateX(-50%); /* Center the GIF */
       width: 150px; /* Smaller GIF size */
       height: 150px;
       background-size: contain;
