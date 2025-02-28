@@ -4,21 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tangram Challenge</title>
-  <!-- Load an Asian-style font from Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
-  <!-- Load confetti effects library -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
   <style>
     /* General Styles */
     body {
-      font-family: 'ZCOOL XiaoWei', serif; /* Asian-style font */
-      background: #1e1e1e; /* Dark background */
-      color: #ffffff; /* White text */
+      font-family: 'ZCOOL XiaoWei', serif;
+      background: #1e1e1e;
+      color: #ffffff;
       margin: 0;
       padding: 0;
       display: flex;
       justify-content: center;
-      align-items: center; /* Center everything vertically */
+      align-items: center;
       min-height: 100vh;
       overflow: hidden;
       position: relative;
@@ -42,94 +40,24 @@
     }
 
     .container {
-      background: #2c2c2c; /* Dark container */
-      padding: 1.5rem; /* Adjusted padding for mobile */
+      background: #2c2c2c;
+      padding: 1rem; /* Reduced padding for mobile */
       border-radius: 15px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
       text-align: center;
-      max-width: 800px;
-      width: 90%; /* Responsive width */
+      max-width: 90%; /* Adjusted for mobile */
+      width: 100%;
       position: relative;
-      margin: 1rem auto; /* Add margin for spacing */
-      overflow-y: auto; /* Make container scrollable */
-      max-height: 90vh; /* Limit height to viewport */
-      display: flex;
-      flex-direction: column;
-      align-items: center; /* Center everything horizontally */
     }
 
     h1 {
       font-size: 2rem; /* Smaller font size for mobile */
-      margin-bottom: 1rem; /* Restored original margin */
-      transition: color 0.3s ease; /* Smooth color transition */
-    }
-
-    /* Winner/Tie Announcement Styling */
-    .winner-announcement {
-      font-size: 2rem; /* Smaller font size for mobile */
-      font-weight: bold;
-      color: #ffffff;
       margin-bottom: 1rem;
-      text-align: center; /* Center text */
     }
 
-    .winner-announcement span {
-      display: block;
-      font-size: 1.5rem; /* Smaller font size for mobile */
-    }
-
-    .score-list {
-      text-align: left;
-      margin: 1.5rem auto; /* Adjusted margin for mobile */
-      max-width: 300px;
-      font-size: 1rem; /* Smaller font size for mobile */
-    }
-
-    .score-list ul {
-      list-style-type: none; /* Remove default bullet points */
-      padding-left: 0; /* Remove default padding */
-    }
-
-    .score-list li {
-      margin: 0.5rem 0;
-    }
-
-    /* Team-specific colors */
-    .blue { color: #3498db; }
-    .red { color: #e74c3c; }
-    .yellow { color: #f1c40f; }
-    .green { color: #2ecc71; }
-    .purple { color: #9b59b6; }
-    .orange { color: #e67e22; }
-
-    /* Points text color */
-    .points {
-      color: white;
-    }
-
-    /* Time's Up! Message Styling */
-    #times-up-message {
-      display: none;
-      font-size: 3rem; /* Smaller font size for mobile */
-      font-weight: bold; /* Bolder text */
-      color: #ff0000; /* Eye-catching red */
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Add shadow for emphasis */
-      position: fixed; /* Position fixed to center on screen */
-      top: 50%; /* Center vertically */
-      left: 50%; /* Center horizontally */
-      transform: translate(-50%, -50%); /* Adjust for centering */
-      z-index: 1000; /* Ensure it's above other elements */
-      padding: 1rem; /* Add padding to prevent touching edges */
-      background: rgba(0, 0, 0, 0.8); /* Add background for better visibility */
-      border-radius: 10px; /* Rounded corners */
-    }
-
+    /* Setup Section */
     #setup {
-      margin-bottom: 1.5rem; /* Adjusted margin for mobile */
-      width: 100%; /* Full width for setup section */
-      display: flex;
-      flex-direction: column;
-      align-items: center; /* Center setup elements */
+      margin-bottom: 1rem; /* Reduced margin for mobile */
     }
 
     #setup label {
@@ -138,41 +66,15 @@
       font-size: 1rem; /* Smaller font size for mobile */
     }
 
-    #setup input {
+    #setup input, #setup select {
       font-family: 'ZCOOL XiaoWei', serif;
       font-size: 1rem;
       padding: 0.5rem;
       border-radius: 5px;
       border: none;
       margin-bottom: 1rem;
-      width: 100%; /* Full width for inputs */
-      max-width: 200px; /* Restored original width */
-      background-color: white; /* Ensure the background is white */
-    }
-
-    /* Dropdowns */
-    #setup select {
-      font-family: 'ZCOOL XiaoWei', serif;
-      font-size: 1rem;
-      padding: 0.5rem;
-      border-radius: 5px;
-      border: none;
-      margin-bottom: 1rem;
-      background-color: white; /* Ensure the background is white */
-      width: 100%; /* Full width for dropdowns */
-      max-width: 200px; /* Restored original width */
-    }
-
-    /* Timer dropdown (10% width) */
-    #timer-minutes {
-      width: 10%; /* Set the width to 10% */
-      max-width: 100px; /* Ensure it doesn't exceed 100px */
-    }
-
-    /* Teams and Rounds dropdowns (20% width) */
-    #teams, #rounds {
-      width: 20%; /* Set the width to 20% */
-      max-width: 200px; /* Ensure it doesn't exceed 200px */
+      width: 100%; /* Full width for mobile */
+      max-width: 100%; /* Ensure inputs don't overflow */
     }
 
     #start-button {
@@ -184,23 +86,17 @@
       border-radius: 10px;
       cursor: pointer;
       transition: background 0.3s ease;
-      margin-top: 1rem; /* Add margin to separate from dropdowns */
       width: 100%; /* Full width for mobile */
-      max-width: 200px; /* Limit width */
-      position: fixed; /* Position fixed to center on screen */
-      bottom: 1rem; /* Position at the bottom */
-      left: 50%; /* Center horizontally */
-      transform: translateX(-50%); /* Adjust for centering */
+      margin-top: 1rem; /* Added margin for spacing */
     }
 
     #start-button:hover {
       background: #2980b9;
     }
 
+    /* Game Section */
     #game {
-      display: none; /* Hidden until game starts */
-      width: 100%; /* Full width for game section */
-      text-align: center; /* Center game elements */
+      display: none;
     }
 
     #timer {
@@ -209,12 +105,25 @@
       margin: 1rem 0;
     }
 
+    #times-up-message {
+      display: none;
+      font-size: 2rem; /* Smaller font size for mobile */
+      font-weight: bold;
+      color: #ff0000;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      position: absolute;
+      top: 10%; /* Adjusted for mobile */
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+    }
+
     .puzzle-container {
-      margin: 1rem 0; /* Adjusted margin for mobile */
+      margin: 1rem 0; /* Reduced margin for mobile */
       display: flex;
-      flex-direction: column; /* Stack silhouette and buttons vertically */
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
+      gap: 1rem;
     }
 
     .silhouette {
@@ -223,15 +132,15 @@
       overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       position: relative;
-      background: #3e3e3e; /* Dark background for silhouette */
+      background: #3e3e3e;
       padding: 10px;
-      max-width: 250px; /* Smaller silhouette for mobile */
+      max-width: 90%; /* Adjusted for mobile */
       width: 100%;
     }
 
     .silhouette:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+      transform: translateY(-5px); /* Smaller hover effect for mobile */
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
     }
 
     .silhouette img {
@@ -241,38 +150,56 @@
       border-radius: 10px;
     }
 
-    /* Overlay for Silhouette */
-    .silhouette::before {
-      content: "Click to Reveal";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+    /* Score Input Buttons */
+    .score-input {
+      display: flex;
+      gap: 0.5rem; /* Smaller gap for mobile */
+      margin-top: 1rem;
+    }
+
+    .score-input button {
+      padding: 0.8rem 1rem; /* Smaller padding for mobile */
+      font-size: 1rem;
       color: white;
-      font-size: 1rem; /* Smaller font size for mobile */
-      font-weight: bold;
-      opacity: 0;
-      transition: opacity 0.3s ease;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      width: 100%; /* Full width for mobile */
     }
 
-    .silhouette:hover::before {
-      opacity: 1;
+    .score-input .correct {
+      background: #2ecc71;
     }
 
+    .score-input .correct:hover {
+      background: #27ae60;
+    }
+
+    .score-input .incorrect {
+      background: #e74c3c;
+    }
+
+    .score-input .incorrect:hover {
+      background: #c0392b;
+    }
+
+    /* Team Display */
     #team-display {
       margin-top: 1rem;
       font-size: 1rem; /* Smaller font size for mobile */
     }
 
+    /* Round Counter */
     #round-counter {
       font-size: 1.2rem; /* Smaller font size for mobile */
       margin: 1rem 0;
-      font-weight: bold; /* Bold text */
     }
 
+    /* End Game Button */
     #end-game-button {
       margin-top: 1rem;
-      padding: 0.8rem 1.5rem;
+      padding: 0.8rem 1rem; /* Smaller padding for mobile */
       font-size: 1rem;
       color: white;
       background: #e74c3c;
@@ -280,6 +207,7 @@
       border-radius: 10px;
       cursor: pointer;
       transition: background 0.3s ease;
+      width: 100%; /* Full width for mobile */
     }
 
     #end-game-button:hover {
@@ -288,11 +216,8 @@
 
     /* Reset Game Button */
     #reset-game-button {
-      position: fixed; /* Position fixed to center on screen */
-      bottom: 1rem; /* Position at the bottom */
-      left: 50%; /* Center horizontally */
-      transform: translateX(-50%); /* Adjust for centering */
-      padding: 0.8rem 1.5rem;
+      margin-top: 1rem;
+      padding: 0.8rem 1rem; /* Smaller padding for mobile */
       font-size: 1rem;
       color: white;
       background: #3498db;
@@ -300,107 +225,53 @@
       border-radius: 10px;
       cursor: pointer;
       transition: background 0.3s ease;
-      display: none; /* Hidden by default */
+      width: 100%; /* Full width for mobile */
+      display: none;
     }
 
     #reset-game-button:hover {
       background: #2980b9;
     }
 
-    /* Correct/Incorrect Buttons Styling */
-    .score-input {
-      display: flex;
-      gap: 10px;
-      margin-top: 1rem;
+    /* Responsive Design */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.5rem; /* Even smaller font size for very small devices */
+      }
+
+      #setup label {
+        font-size: 0.9rem; /* Smaller font size for very small devices */
+      }
+
+      #setup input, #setup select {
+        font-size: 0.9rem; /* Smaller font size for very small devices */
+      }
+
+      #start-button, #end-game-button, #reset-game-button {
+        font-size: 0.9rem; /* Smaller font size for very small devices */
+      }
+
+      .silhouette {
+        max-width: 100%; /* Full width for very small devices */
+      }
+
+      .score-input button {
+        padding: 0.6rem 0.8rem; /* Smaller padding for very small devices */
+      }
     }
 
-    .score-input button {
-      padding: 0.8rem 1.5rem;
-      font-size: 1rem;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    .score-input .correct {
-      background: #2ecc71; /* Green for correct */
-    }
-
-    .score-input .correct:hover {
-      background: #27ae60;
-    }
-
-    .score-input .incorrect {
-      background: #e74c3c; /* Red for incorrect */
-    }
-
-    .score-input .incorrect:hover {
-      background: #c0392b;
-    }
-
-    /* Hide game elements when the game ends */
+    /* Hide elements during announcement */
     .hide-on-end {
       display: none;
     }
 
-    /* GIF Animation Styling */
-    .gif-animation {
-      position: fixed; /* Position fixed to center on screen */
-      top: 50%; /* Center vertically */
-      left: 50%; /* Center horizontally */
-      transform: translate(-50%, -50%); /* Adjust for centering */
-      width: 300px; /* Bigger GIF for mobile */
-      height: 300px;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      z-index: 1000;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .container {
-        padding: 1rem; /* Adjusted padding for tablets */
-      }
-
-      h1 {
-        font-size: 1.8rem; /* Smaller font size for tablets */
-      }
-
-      #setup input, #setup select, #start-button {
-        max-width: 150px; /* Smaller width for mobile */
-      }
-
-      .silhouette {
-        max-width: 200px; /* Smaller silhouette for mobile */
-      }
-
-      .gif-animation {
-        width: 250px; /* Bigger GIF for mobile */
-        height: 250px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 1.5rem; /* Smaller font size for very small devices */
-      }
-
-      #setup input, #setup select, #start-button {
-        max-width: 120px; /* Even smaller width for very small devices */
-      }
-
-      .silhouette {
-        max-width: 180px; /* Smaller silhouette for very small devices */
-      }
-
-      .gif-animation {
-        width: 200px; /* Bigger GIF for very small devices */
-        height: 200px;
-      }
-    }
+    /* Team-specific colors for announcement */
+    .red { color: #e74c3c; }
+    .blue { color: #3498db; }
+    .yellow { color: #f1c40f; }
+    .green { color: #2ecc71; }
+    .purple { color: #9b59b6; }
+    .orange { color: #e67e22; }
   </style>
 </head>
 <body>
@@ -458,7 +329,6 @@
         <div class="silhouette" data-color="puzzle.png">
           <img src="kouti.png" alt="Tangram Silhouette">
         </div>
-        <!-- Correct/Incorrect buttons will be inserted here dynamically -->
       </div>
       <button id="end-game-button" onclick="endGame()">End Game</button>
       <button id="reset-game-button" onclick="resetGame()">Reset Game</button>
@@ -470,7 +340,6 @@
     const puzzles = [
       { silhouette: "kouti.png", color: "puzzle.png" }, // First puzzle
       { silhouette: "Snapshot_2.png", color: "lol.png" }, // Second puzzle
-      // Add more puzzles here
     ];
 
     const teamColors = ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"];
