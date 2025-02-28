@@ -272,6 +272,20 @@
     .green { color: #2ecc71; }
     .purple { color: #9b59b6; }
     .orange { color: #e67e22; }
+
+    /* GIF Animation Styling */
+    .gif-animation {
+      position: absolute;
+      top: 50%; /* Positioned in the middle vertically */
+      left: 50%; /* Positioned in the middle horizontally */
+      transform: translate(-50%, -50%); /* Center the GIF */
+      width: 150px; /* Smaller GIF size */
+      height: 150px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      z-index: 1000; /* Ensure it's above other elements */
+    }
   </style>
 </head>
 <body>
