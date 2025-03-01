@@ -307,7 +307,7 @@
     /* GIF Animation Styling */
     .gif-animation {
       position: absolute;
-      top: 10%; /* Positioned above the announcement with a larger gap */
+      top: 10%; /* Positioned above the announcement with a gap */
       left: 50%;
       transform: translateX(-50%);
       width: 150px; /* Smaller size to fit between top and announcement */
@@ -315,8 +315,13 @@
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
-      z-index: 1000; /* Ensure it's above the announcement */
+      z-index: 500; /* Ensure it's below the announcement */
       pointer-events: none; /* Prevent interaction with the GIF */
+    }
+
+    /* Ensure the announcement is above the GIFs */
+    .winner-announcement {
+      z-index: 1000; /* Higher z-index to ensure it's above the GIFs */
     }
   </style>
 </head>
@@ -671,5 +676,4 @@
     document.getElementById('end-game-button').addEventListener('click', announceWinner);
   </script>
 </body>
-</html>
 </html>
