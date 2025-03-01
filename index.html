@@ -107,12 +107,17 @@
       margin: 1rem 0;
     }
 
+    /* Time's Up! Message */
     #times-up-message {
       display: none;
-      font-size: 2.5rem;
+      font-size: 4rem; /* Bigger font size */
       font-weight: bold;
-      color: #ff0000;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      color: #ff0000; /* Red color */
+      text-shadow: 
+        -2px -2px 0 #000,  
+         2px -2px 0 #000,
+        -2px  2px 0 #000,
+         2px  2px 0 #000; /* Black outline around the letters */
       position: absolute;
       top: 50%;
       left: 50%;
@@ -352,18 +357,19 @@
         <option value="9">9 Rounds</option>
         <option value="10">10 Rounds</option>
       </select>
-      <label for="timer-minutes">Timer Duration (minutes):</label>
+      <label for="timer-minutes">Timer Duration:</label>
       <select id="timer-minutes">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
+        <option value="5">5 Seconds</option> <!-- New 5-second option -->
+        <option value="1">1 Minute</option>
+        <option value="2">2 Minutes</option>
+        <option value="3">3 Minutes</option>
+        <option value="4">4 Minutes</option>
+        <option value="5">5 Minutes</option>
+        <option value="6">6 Minutes</option>
+        <option value="7">7 Minutes</option>
+        <option value="8">8 Minutes</option>
+        <option value="9">9 Minutes</option>
+        <option value="10">10 Minutes</option>
       </select>
     </div>
     <button id="start-button" onclick="startGame()">Start Game</button>
@@ -460,7 +466,7 @@
       currentTeamIndex = 0;
       updateTeamDisplay();
       gameTitle.textContent = "Tangram Challenge";
-      timeLeft = timerDuration * 60;
+      timeLeft = timerDuration * (timerDuration === 5 ? 1 : 60); // Handle 5 seconds
       startTimer();
     }
 
@@ -473,7 +479,7 @@
     function updateTimer() {
       const minutes = Math.floor(timeLeft / 60);
       const seconds = timeLeft % 60;
-      timerElement.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+      timerElement.textContent = timerDuration === 5 ? `0:${seconds.toString().padStart(2, '0')}` : `${minutes}:${seconds.toString().padStart(2, '0')}`;
       timeLeft--;
 
       if (timeLeft < 0) {
@@ -531,7 +537,7 @@
       currentPuzzleIndex = (currentPuzzleIndex + 1) % puzzles.length;
       silhouetteElement.innerHTML = `<img src="${puzzles[currentPuzzleIndex].silhouette}" alt="Tangram Silhouette">`;
       timesUpMessage.style.display = "none";
-      timeLeft = timerDuration * 60;
+      timeLeft = timerDuration * (timerDuration === 5 ? 1 : 60); // Handle 5 seconds
       startTimer();
     }
 
