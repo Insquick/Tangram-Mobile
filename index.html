@@ -121,10 +121,10 @@
       background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
       padding: 10px 20px; /* Add padding for the background block */
       border-radius: 10px; /* Rounded corners for the background block */
-      position: absolute;
-      top: 50%;
+      position: fixed; /* Fixed position to stay at the top */
+      top: 10%; /* 2-3cm down from the top */
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translateX(-50%);
       z-index: 1000;
       white-space: nowrap;
     }
@@ -314,7 +314,7 @@
 
     /* GIF Animation Styling */
     .gif-animation {
-      position: absolute;
+      position: fixed; /* Fixed position to stay at the top */
       top: 10%; /* 2-3cm down from the top */
       left: 50%;
       transform: translateX(-50%);
