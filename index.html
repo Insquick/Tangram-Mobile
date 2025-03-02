@@ -122,10 +122,10 @@
       padding: 10px 20px; /* Add padding for the background block */
       border-radius: 10px; /* Rounded corners for the background block */
       position: absolute;
-      top: calc(5% + 150px + 5%); /* 5% below the bottom of the GIFs */
+      top: 50%; /* Center vertically */
       left: 50%;
-      transform: translateX(-50%);
-      z-index: 1000;
+      transform: translate(-50%, -50%);
+      z-index: 1000; /* Ensure it's above everything */
       white-space: nowrap;
     }
 
@@ -292,8 +292,11 @@
       color: #ffffff;
       margin-bottom: 1rem;
       text-align: center;
-      position: relative;
-      z-index: 100; /* Lower z-index to ensure it's below the GIFs */
+      position: absolute;
+      top: calc(5% + 150px + 5%); /* 5% below the bottom of the GIFs */
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000; /* Ensure it's above the GIFs */
     }
 
     .score-list {
@@ -323,7 +326,7 @@
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
-      z-index: 1000; /* Higher z-index to ensure it's above the announcement */
+      z-index: 999; /* Ensure it's below the announcement */
       pointer-events: none; /* Prevent interaction with the GIF */
     }
   </style>
