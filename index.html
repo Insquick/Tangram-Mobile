@@ -50,6 +50,10 @@
       position: relative;
       margin: 2rem 0;
       z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
     h1 {
@@ -290,24 +294,16 @@
       font-size: 2.5rem;
       font-weight: bold;
       color: #ffffff;
-      margin-bottom: 1rem;
+      margin-bottom: 2rem; /* Add spacing below the announcement */
       text-align: center;
-      position: absolute;
-      top: calc(5% + 150px + 5%); /* 5% from top + GIF height + 5% spacing */
-      left: 50%;
-      transform: translateX(-50%);
       z-index: 100; /* Ensure it's above the score list */
     }
 
     .score-list {
       text-align: left;
-      margin: 2rem auto;
+      margin: 0 auto; /* Center the score list */
       max-width: 300px;
       font-size: 1.2rem;
-      position: absolute;
-      top: calc(5% + 150px + 5% + 100px); /* Below the winner announcement */
-      left: 50%;
-      transform: translateX(-50%);
       z-index: 99; /* Ensure it's below the winner announcement */
     }
 
@@ -317,7 +313,7 @@
     }
 
     .score-list li {
-      margin: 0.5rem 0;
+      margin: 0.5rem 0; /* Add spacing between score list items */
     }
 
     /* GIF Animation Styling */
