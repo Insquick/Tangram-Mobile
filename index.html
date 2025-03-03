@@ -110,17 +110,17 @@
     /* Time's Up! Message */
     #times-up-message {
       display: none;
-      font-size: 4rem; /* Bigger font size */
+      font-size: 4rem;
       font-weight: bold;
-      color: #ff0000; /* Red color */
+      color: #ff0000;
       text-shadow: 
         -2px -2px 0 #000,  
          2px -2px 0 #000,
         -2px  2px 0 #000,
-         2px  2px 0 #000; /* Black outline around the letters */
-      background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
-      padding: 10px 20px; /* Add padding for the background block */
-      border-radius: 10px; /* Rounded corners for the background block */
+         2px  2px 0 #000;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 10px 20px;
+      border-radius: 10px;
       position: absolute;
       top: 50%;
       left: 50%;
@@ -296,7 +296,7 @@
       top: calc(5% + 150px + 5%); /* 5% from top + GIF height + 5% spacing */
       left: 50%;
       transform: translateX(-50%);
-      z-index: 100; /* Lower z-index to ensure it's below the GIFs */
+      z-index: 100; /* Ensure it's above the score list */
     }
 
     .score-list {
@@ -304,6 +304,11 @@
       margin: 2rem auto;
       max-width: 300px;
       font-size: 1.2rem;
+      position: absolute;
+      top: calc(5% + 150px + 5% + 100px); /* Below the winner announcement */
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 99; /* Ensure it's below the winner announcement */
     }
 
     .score-list ul {
@@ -365,7 +370,7 @@
       </select>
       <label for="timer-minutes">Timer Duration:</label>
       <select id="timer-minutes">
-        <option value="5">5 Seconds</option> <!-- New 5-second option -->
+        <option value="5">5 Seconds</option>
         <option value="1">1 Minute</option>
         <option value="2">2 Minutes</option>
         <option value="3">3 Minutes</option>
@@ -607,7 +612,7 @@
           return `<li>
                     <span class="${team.toLowerCase()}" style="color: ${teamColor}">• ${team}</span>
                     <span style="color: ${teamColor}">:</span>
-                    <span class="points" style="color: white">${score} points</span>
+                    <span class="points" style="color: white">${score} point${score !== 1 ? "s" : ""}</span>
                   </li>`;
         })
         .join("");
