@@ -22,7 +22,16 @@
       position: relative;
     }
 
-    /* Patterned Background */
+    /* Diagonal Wave Background Animation */
+    @keyframes diagonal-wave {
+      0% {
+        background-position: 0% 0%;
+      }
+      100% {
+        background-position: 100% 100%;
+      }
+    }
+
     body::before {
       content: "";
       position: absolute;
@@ -37,23 +46,17 @@
         linear-gradient(-135deg, transparent 75%, rgba(100, 100, 100, 0.1) 75%);
       background-size: 40px 40px;
       z-index: -1;
+      animation: diagonal-wave 5s linear infinite;
     }
 
-    /* Rainbow Border Animation */
-    @keyframes rainbow-border {
-      0% { border-color: #ff0000; }
-      14% { border-color: #ff7f00; }
-      28% { border-color: #ffff00; }
-      42% { border-color: #00ff00; }
-      57% { border-color: #0000ff; }
-      71% { border-color: #4b0082; }
-      85% { border-color: #9400d3; }
-      100% { border-color: #ff0000; }
-    }
-
-    /* Container Design */
+    /* Carbon Fiber Pattern for Container */
     .container {
-      background: #2c2c2c;
+      background: 
+        radial-gradient(circle, transparent 20%, #2c2c2c 20%, #2c2c2c 80%, transparent 80%, transparent),
+        radial-gradient(circle, transparent 20%, #2c2c2c 20%, #2c2c2c 80%, transparent 80%, transparent) 25px 25px,
+        linear-gradient(#333 2px, transparent 2px) 0 -1px,
+        linear-gradient(90deg, #333 2px, #2c2c2c 2px) -1px 0;
+      background-size: 50px 50px, 50px 50px, 25px 25px, 25px 25px;
       padding: 1rem;
       border-radius: 15px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
@@ -67,25 +70,8 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      border: 5px solid #ff0000;
-      animation: rainbow-border 5s linear infinite;
+      border: 5px solid #444;
       overflow: hidden;
-    }
-
-    /* Inner Container Design */
-    .container::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: 
-        radial-gradient(circle, rgba(255, 255, 255, 0.05) 10%, transparent 10.01%),
-        radial-gradient(circle, rgba(255, 255, 255, 0.05) 10%, transparent 10.01%);
-      background-size: 20px 20px;
-      background-position: 0 0, 10px 10px;
-      z-index: -1;
     }
 
     /* Rainbow Text Animation */
@@ -101,7 +87,8 @@
     }
 
     h1#game-title {
-      font-size: 2rem;
+      font-size: 3rem; /* Larger text */
+      font-weight: bold; /* Bolder text */
       margin-bottom: 1rem;
       animation: rainbow-text 5s linear infinite;
     }
@@ -114,12 +101,14 @@
     #setup label {
       display: block;
       margin: 0.5rem 0;
-      font-size: 1rem;
+      font-size: 1.2rem; /* Larger text */
+      font-weight: bold; /* Bolder text */
     }
 
     #setup input, #setup select {
       font-family: 'ZCOOL XiaoWei', serif;
-      font-size: 1rem;
+      font-size: 1.2rem; /* Larger text */
+      font-weight: bold; /* Bolder text */
       padding: 0.5rem;
       border-radius: 5px;
       border: none;
@@ -130,7 +119,8 @@
 
     #start-button {
       padding: 0.8rem 1.5rem;
-      font-size: 1rem;
+      font-size: 1.2rem; /* Larger text */
+      font-weight: bold; /* Bolder text */
       color: white;
       background: #3498db;
       border: none;
@@ -151,8 +141,8 @@
     }
 
     #timer {
-      font-size: 1.5rem;
-      font-weight: bold;
+      font-size: 2rem; /* Larger text */
+      font-weight: bold; /* Bolder text */
       margin: 1rem 0;
     }
 
@@ -185,6 +175,7 @@
       align-items: center;
       gap: 1rem;
       position: relative;
+      width: 100%;
     }
 
     .silhouette {
@@ -195,8 +186,8 @@
       position: relative;
       background: #3e3e3e;
       padding: 10px;
+      width: 50%; /* 50% of the screen width */
       max-width: 90%;
-      width: 100%;
     }
 
     .silhouette:hover {
@@ -220,7 +211,8 @@
 
     .score-input button {
       padding: 0.8rem 1rem;
-      font-size: 1rem;
+      font-size: 1.2rem; /* Larger text */
+      font-weight: bold; /* Bolder text */
       color: white;
       border: none;
       border-radius: 10px;
@@ -248,12 +240,14 @@
     /* Team Display */
     #team-display {
       margin-top: 1rem;
-      font-size: 1rem;
+      font-size: 1.5rem; /* Larger text */
+      font-weight: bold; /* Bolder text */
     }
 
     /* Round Counter */
     #round-counter {
-      font-size: 1.2rem;
+      font-size: 1.5rem; /* Larger text */
+      font-weight: bold; /* Bolder text */
       margin: 1rem 0;
     }
 
@@ -261,7 +255,8 @@
     #end-game-button {
       margin-top: 1rem;
       padding: 0.8rem 1rem;
-      font-size: 1rem;
+      font-size: 1.2rem; /* Larger text */
+      font-weight: bold; /* Bolder text */
       color: white;
       background: #e74c3c;
       border: none;
@@ -279,7 +274,8 @@
     #reset-game-button {
       margin-top: 1rem;
       padding: 0.8rem 1rem;
-      font-size: 1rem;
+      font-size: 1.2rem; /* Larger text */
+      font-weight: bold; /* Bolder text */
       color: white;
       background: #3498db;
       border: none;
@@ -296,24 +292,24 @@
 
     /* Responsive Design */
     @media (max-width: 480px) {
-      h1 {
-        font-size: 1.5rem;
+      h1#game-title {
+        font-size: 2rem; /* Adjusted for smaller screens */
       }
 
       #setup label {
-        font-size: 0.9rem;
+        font-size: 1rem; /* Adjusted for smaller screens */
       }
 
       #setup input, #setup select {
-        font-size: 0.9rem;
+        font-size: 1rem; /* Adjusted for smaller screens */
       }
 
       #start-button, #end-game-button, #reset-game-button {
-        font-size: 0.9rem;
+        font-size: 1rem; /* Adjusted for smaller screens */
       }
 
       .silhouette {
-        max-width: 100%;
+        width: 80%; /* Adjusted for smaller screens */
       }
 
       .score-input button {
@@ -336,7 +332,7 @@
 
     /* Announcement Styling */
     .winner-announcement {
-      font-size: 2.5rem;
+      font-size: 3rem; /* Larger text */
       font-weight: bold;
       color: #ffffff;
       margin-bottom: 2.5%; /* Adjusted to 2.5% */
@@ -356,7 +352,8 @@
       text-align: left;
       margin: 0 auto;
       max-width: 300px;
-      font-size: 1.2rem;
+      font-size: 1.5rem; /* Larger text */
+      font-weight: bold; /* Bolder text */
       z-index: 99;
     }
 
