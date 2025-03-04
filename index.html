@@ -39,6 +39,19 @@
       z-index: -1;
     }
 
+    /* Rainbow Border Animation */
+    @keyframes rainbow-border {
+      0% { border-color: #ff0000; }
+      14% { border-color: #ff7f00; }
+      28% { border-color: #ffff00; }
+      42% { border-color: #00ff00; }
+      57% { border-color: #0000ff; }
+      71% { border-color: #4b0082; }
+      85% { border-color: #9400d3; }
+      100% { border-color: #ff0000; }
+    }
+
+    /* Container Design */
     .container {
       background: #2c2c2c;
       padding: 1rem;
@@ -54,11 +67,43 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      border: 5px solid #ff0000;
+      animation: rainbow-border 5s linear infinite;
+      overflow: hidden;
     }
 
-    h1 {
+    /* Inner Container Design */
+    .container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle, rgba(255, 255, 255, 0.05) 10%, transparent 10.01%),
+        radial-gradient(circle, rgba(255, 255, 255, 0.05) 10%, transparent 10.01%);
+      background-size: 20px 20px;
+      background-position: 0 0, 10px 10px;
+      z-index: -1;
+    }
+
+    /* Rainbow Text Animation */
+    @keyframes rainbow-text {
+      0% { color: #ff0000; }
+      14% { color: #ff7f00; }
+      28% { color: #ffff00; }
+      42% { color: #00ff00; }
+      57% { color: #0000ff; }
+      71% { color: #4b0082; }
+      85% { color: #9400d3; }
+      100% { color: #ff0000; }
+    }
+
+    h1#game-title {
       font-size: 2rem;
       margin-bottom: 1rem;
+      animation: rainbow-text 5s linear infinite;
     }
 
     /* Setup Section */
@@ -131,24 +176,6 @@
       transform: translate(-50%, -50%);
       z-index: 1000;
       white-space: nowrap;
-    }
-
-    /* Winner Announcement and Tie Message */
-    .winner-announcement {
-      font-size: 2.5rem;
-      font-weight: bold;
-      color: #ffffff;
-      text-shadow: 
-        -2px -2px 0 #000,  
-         2px -2px 0 #000,
-        -2px  2px 0 #000,
-         2px  2px 0 #000;
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 10px 20px;
-      border-radius: 10px;
-      margin-bottom: 1rem; /* Spacing below the announcement */
-      text-align: center;
-      z-index: 100; /* Ensure it's above the score list */
     }
 
     .puzzle-container {
@@ -307,13 +334,30 @@
     .purple { color: #9b59b6; }
     .orange { color: #e67e22; }
 
-    /* Score List Styling */
+    /* Announcement Styling */
+    .winner-announcement {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #ffffff;
+      margin-bottom: 2.5%; /* Adjusted to 2.5% */
+      text-align: center;
+      z-index: 100;
+      text-shadow: 
+        -2px -2px 0 #000,  
+         2px -2px 0 #000,
+        -2px  2px 0 #000,
+         2px  2px 0 #000;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 10px 20px;
+      border-radius: 10px;
+    }
+
     .score-list {
       text-align: left;
-      margin: 0 auto; /* Center the score list */
+      margin: 0 auto;
       max-width: 300px;
       font-size: 1.2rem;
-      z-index: 99; /* Ensure it's below the winner announcement */
+      z-index: 99;
     }
 
     .score-list ul {
@@ -322,13 +366,13 @@
     }
 
     .score-list li {
-      margin: 0.5rem 0; /* Add spacing between score list items */
+      margin: 0.5rem 0;
     }
 
     /* GIF Animation Styling */
     .gif-animation {
       position: absolute;
-      top: 2.5%; /* Adjusted to 2.5% from the top */
+      top: 2.5%; /* Adjusted to 2.5% */
       left: 50%;
       transform: translateX(-50%);
       width: 150px;
@@ -336,8 +380,8 @@
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
-      z-index: 1000; /* Higher z-index to ensure it's above the announcement */
-      pointer-events: none; /* Prevent interaction with the GIF */
+      z-index: 1000;
+      pointer-events: none;
     }
   </style>
 </head>
@@ -459,7 +503,7 @@
 
       currentTeamDisplay.textContent = currentTeam;
       currentTeamDisplay.style.color = teamColor;
-      gameTitle.style.color = teamColor;
+      gameTitle.style.color = teamColor; // Update title color to match team
       roundCounter.style.color = teamColor;
     }
 
@@ -479,6 +523,8 @@
       resetGameButton.style.display = "none";
       startButton.style.display = "none";
 
+      // Stop rainbow animation and set title color to match team
+      gameTitle.style.animation = "none";
       currentTeamIndex = 0;
       updateTeamDisplay();
       gameTitle.textContent = "Tangram Challenge";
@@ -674,6 +720,7 @@
       startButton.style.display = "block";
       gameTitle.textContent = "Tangram Challenge";
       gameTitle.style.color = "white";
+      gameTitle.style.animation = "rainbow-text 5s linear infinite"; // Restore rainbow animation
       silhouetteElement.innerHTML = `<img src="${puzzles[currentPuzzleIndex].silhouette}" alt="Tangram Silhouette">`;
 
       roundCounter.classList.remove('hide-on-end');
