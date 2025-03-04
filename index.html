@@ -22,7 +22,7 @@
       position: relative;
     }
 
-    /* Diagonal Wave Background Animation */
+    /* Diagonal Wave Background Animation (Slowed Down to 15s) */
     @keyframes diagonal-wave {
       0% {
         background-position: 0% 0%;
@@ -46,17 +46,27 @@
         linear-gradient(-135deg, transparent 75%, rgba(100, 100, 100, 0.1) 75%);
       background-size: 40px 40px;
       z-index: -1;
-      animation: diagonal-wave 5s linear infinite;
+      animation: diagonal-wave 15s linear infinite; /* Slowed down to 15s */
     }
 
-    /* Carbon Fiber Pattern for Container */
+    /* Rainbow Border Animation */
+    @keyframes rainbow-border {
+      0% { border-color: #ff0000; }
+      14% { border-color: #ff7f00; }
+      28% { border-color: #ffff00; }
+      42% { border-color: #00ff00; }
+      57% { border-color: #0000ff; }
+      71% { border-color: #4b0082; }
+      85% { border-color: #9400d3; }
+      100% { border-color: #ff0000; }
+    }
+
+    /* Container with Diamond Carbon Fiber Pattern */
     .container {
       background: 
-        radial-gradient(circle, transparent 20%, #2c2c2c 20%, #2c2c2c 80%, transparent 80%, transparent),
-        radial-gradient(circle, transparent 20%, #2c2c2c 20%, #2c2c2c 80%, transparent 80%, transparent) 25px 25px,
-        linear-gradient(#333 2px, transparent 2px) 0 -1px,
-        linear-gradient(90deg, #333 2px, #2c2c2c 2px) -1px 0;
-      background-size: 50px 50px, 50px 50px, 25px 25px, 25px 25px;
+        linear-gradient(45deg, #2c2c2c 25%, transparent 25%, transparent 75%, #2c2c2c 75%, #2c2c2c),
+        linear-gradient(-45deg, #2c2c2c 25%, transparent 25%, transparent 75%, #2c2c2c 75%, #2c2c2c);
+      background-size: 30px 30px;
       padding: 1rem;
       border-radius: 15px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
@@ -70,7 +80,8 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      border: 5px solid #444;
+      border: 5px solid #ff0000;
+      animation: rainbow-border 5s linear infinite;
       overflow: hidden;
     }
 
@@ -187,6 +198,7 @@
       background: #3e3e3e;
       padding: 10px;
       width: 50%; /* 50% of the screen width */
+      height: 50vh; /* 50% of the screen height */
       max-width: 90%;
     }
 
@@ -197,9 +209,10 @@
 
     .silhouette img {
       width: 100%;
-      height: auto;
+      height: 100%;
       display: block;
       border-radius: 10px;
+      object-fit: cover; /* Ensure the image fits nicely */
     }
 
     /* Score Input Buttons */
@@ -310,6 +323,7 @@
 
       .silhouette {
         width: 80%; /* Adjusted for smaller screens */
+        height: 40vh; /* Adjusted for smaller screens */
       }
 
       .score-input button {
