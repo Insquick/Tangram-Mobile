@@ -61,21 +61,16 @@
       100% { border-color: #ff0000; }
     }
 
-    /* Container with Diamond Carbon Fiber Pattern */
+    /* Container with Dark Blue Stripes and Moving Gradient */
     .container {
-      background: 
-        linear-gradient(45deg, #2c2c2c 25%, transparent 25%, transparent 75%, #2c2c2c 75%, #2c2c2c),
-        linear-gradient(-45deg, #2c2c2c 25%, transparent 25%, transparent 75%, #2c2c2c 75%, #2c2c2c);
-      background-size: 30px 30px;
+      position: relative;
       padding: 1rem;
       border-radius: 15px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
       text-align: center;
       max-width: 90%;
       width: 100%;
-      position: relative;
       margin: 2rem 0;
-      z-index: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -83,6 +78,57 @@
       border: 5px solid #ff0000;
       animation: rainbow-border 5s linear infinite;
       overflow: hidden;
+    }
+
+    /* Dark Blue Stripes (Static) */
+    .container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        135deg,
+        transparent 25%,
+        #000022 25%, /* Dark Blue */
+        transparent 50%,
+        #000022 50%, /* Dark Blue */
+        transparent 75%,
+        #000022 75%, /* Dark Blue */
+        transparent 100%
+      );
+      background-size: 40px 40px; /* Size of the stripes */
+      z-index: 1; /* Place it above the gradient */
+    }
+
+    /* Moving Gradient (Behind the Stripes) */
+    .container::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        45deg,
+        #000022, /* Dark Blue */
+        #110033, /* Dark Purple */
+        #330033, /* Purple */
+        #660022, /* Dark Red */
+        #330033, /* Purple */
+        #110033, /* Dark Purple */
+        #000022  /* Dark Blue */
+      );
+      background-size: 400% 400%; /* Size of the gradient */
+      animation: moveGradient 8s infinite linear; /* Animation for gradient */
+      z-index: 0; /* Place it behind the stripes */
+    }
+
+    /* Animation for Gradient Movement */
+    @keyframes moveGradient {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
     }
 
     /* Rainbow Text Animation */
@@ -99,27 +145,32 @@
 
     h1#game-title {
       font-size: 3rem; /* Larger text */
-      font-weight: bold; /* Bolder text */
+      font-weight: 900; /* Bolder text */
       margin-bottom: 1rem;
       animation: rainbow-text 5s linear infinite;
+      position: relative; /* Ensure text is above the background */
+      z-index: 2; /* Higher than the container background */
     }
 
     /* Setup Section */
     #setup {
       margin-bottom: 1rem;
+      display: block; /* Ensure setup section is visible by default */
+      position: relative; /* Ensure it's above the container background */
+      z-index: 2; /* Higher than the container background */
     }
 
     #setup label {
       display: block;
       margin: 0.5rem 0;
       font-size: 1.2rem; /* Larger text */
-      font-weight: bold; /* Bolder text */
+      font-weight: 900; /* Bolder text */
     }
 
     #setup input, #setup select {
       font-family: 'ZCOOL XiaoWei', serif;
       font-size: 1.2rem; /* Larger text */
-      font-weight: bold; /* Bolder text */
+      font-weight: 900; /* Bolder text */
       padding: 0.5rem;
       border-radius: 5px;
       border: none;
@@ -131,7 +182,7 @@
     #start-button {
       padding: 0.8rem 1.5rem;
       font-size: 1.2rem; /* Larger text */
-      font-weight: bold; /* Bolder text */
+      font-weight: 900; /* Bolder text */
       color: white;
       background: #3498db;
       border: none;
@@ -140,6 +191,8 @@
       transition: background 0.3s ease;
       width: 100%;
       margin-top: 1rem;
+      position: relative; /* Ensure button is above the background */
+      z-index: 2; /* Higher than the container background */
     }
 
     #start-button:hover {
@@ -148,12 +201,14 @@
 
     /* Game Section */
     #game {
-      display: none;
+      display: none; /* Hidden by default */
+      position: relative; /* Ensure it's above the container background */
+      z-index: 2; /* Higher than the container background */
     }
 
     #timer {
       font-size: 2rem; /* Larger text */
-      font-weight: bold; /* Bolder text */
+      font-weight: 900; /* Bolder text */
       margin: 1rem 0;
     }
 
@@ -161,7 +216,7 @@
     #times-up-message {
       display: none;
       font-size: 4rem;
-      font-weight: bold;
+      font-weight: 900; /* Bolder text */
       color: #ff0000;
       text-shadow: 
         -2px -2px 0 #000,  
@@ -225,7 +280,7 @@
     .score-input button {
       padding: 0.8rem 1rem;
       font-size: 1.2rem; /* Larger text */
-      font-weight: bold; /* Bolder text */
+      font-weight: 900; /* Bolder text */
       color: white;
       border: none;
       border-radius: 10px;
@@ -254,13 +309,13 @@
     #team-display {
       margin-top: 1rem;
       font-size: 1.5rem; /* Larger text */
-      font-weight: bold; /* Bolder text */
+      font-weight: 900; /* Bolder text */
     }
 
     /* Round Counter */
     #round-counter {
       font-size: 1.5rem; /* Larger text */
-      font-weight: bold; /* Bolder text */
+      font-weight: 900; /* Bolder text */
       margin: 1rem 0;
     }
 
@@ -269,7 +324,7 @@
       margin-top: 1rem;
       padding: 0.8rem 1rem;
       font-size: 1.2rem; /* Larger text */
-      font-weight: bold; /* Bolder text */
+      font-weight: 900; /* Bolder text */
       color: white;
       background: #e74c3c;
       border: none;
@@ -288,7 +343,7 @@
       margin-top: 1rem;
       padding: 0.8rem 1rem;
       font-size: 1.2rem; /* Larger text */
-      font-weight: bold; /* Bolder text */
+      font-weight: 900; /* Bolder text */
       color: white;
       background: #3498db;
       border: none;
@@ -347,7 +402,7 @@
     /* Announcement Styling */
     .winner-announcement {
       font-size: 3rem; /* Larger text */
-      font-weight: bold;
+      font-weight: 900; /* Bolder text */
       color: #ffffff;
       margin-bottom: 2.5%; /* Adjusted to 2.5% */
       text-align: center;
@@ -367,7 +422,7 @@
       margin: 0 auto;
       max-width: 300px;
       font-size: 1.5rem; /* Larger text */
-      font-weight: bold; /* Bolder text */
+      font-weight: 900; /* Bolder text */
       z-index: 99;
     }
 
