@@ -22,7 +22,7 @@
       position: relative;
     }
 
-    /* Diagonal Wave Background Animation (Slowed Down to 20s) */
+    /* Diagonal Wave Background Animation (Slowed Down to 30s) */
     @keyframes diagonal-wave {
       0% {
         background-position: 0% 0%;
@@ -46,7 +46,7 @@
         linear-gradient(-135deg, transparent 75%, rgba(100, 100, 100, 0.1) 75%);
       background-size: 40px 40px;
       z-index: -1;
-      animation: diagonal-wave 20s linear infinite; /* Slowed down to 20s */
+      animation: diagonal-wave 30s linear infinite; /* Slowed down to 30s */
     }
 
     /* Rainbow Border Animation */
@@ -236,6 +236,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
       z-index: 1000;
+      white-space: nowrap; /* Ensure message stays in one line */
     }
 
     .puzzle-container {
@@ -282,26 +283,30 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      gap: 1rem; /* Space between buttons */
     }
 
     /* Score Input Buttons */
     .score-input {
       display: none; /* Hidden by default */
-      gap: 0.5rem;
       width: 100%;
       max-width: 300px;
     }
 
     .score-input button {
-      padding: 0.8rem 1rem;
-      font-size: 1.2rem; /* Larger text */
+      padding: 1rem;
+      font-size: 2rem; /* Larger text */
       font-weight: 900; /* Bolder text */
       color: white;
       border: none;
-      border-radius: 10px;
+      border-radius: 15px;
       cursor: pointer;
-      transition: background 0.3s ease;
-      width: 100%; /* Same size for both buttons */
+      transition: all 0.3s ease;
+      width: 20%; /* Fixed percentage of screen width */
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .score-input .correct {
@@ -310,6 +315,8 @@
 
     .score-input .correct:hover {
       background: #27ae60;
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     }
 
     .score-input .incorrect {
@@ -318,6 +325,8 @@
 
     .score-input .incorrect:hover {
       background: #c0392b;
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     }
 
     /* Team Display */
