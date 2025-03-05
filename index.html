@@ -22,13 +22,13 @@
       position: relative;
     }
 
-    /* Diagonal Wave Background Animation (Faster and Smooth) */
+    /* Diagonal Wave Background Animation (Slowed Down to 15s) */
     @keyframes diagonal-wave {
       0% {
-        transform: translate(0%, 0%);
+        background-position: 0% 0%;
       }
       100% {
-        transform: translate(-40px, -40px); /* Move diagonally by the pattern size */
+        background-position: 100% 100%;
       }
     }
 
@@ -37,16 +37,16 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: 200%; /* Double the width for seamless looping */
-      height: 200%; /* Double the height for seamless looping */
+      width: 100%;
+      height: 100%;
       background: 
         linear-gradient(45deg, transparent 75%, rgba(255, 255, 255, 0.1) 75%),
         linear-gradient(-45deg, transparent 75%, rgba(200, 200, 200, 0.1) 75%),
         linear-gradient(135deg, transparent 75%, rgba(150, 150, 150, 0.1) 75%),
         linear-gradient(-135deg, transparent 75%, rgba(100, 100, 100, 0.1) 75%);
-      background-size: 40px 40px; /* Size of the pattern */
+      background-size: 40px 40px;
       z-index: -1;
-      animation: diagonal-wave 5s linear infinite; /* Faster: 5s */
+      animation: diagonal-wave 15s linear infinite; /* Slowed down to 15s */
     }
 
     /* Rainbow Border Animation */
@@ -108,8 +108,8 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: 200%; /* Double the width for seamless looping */
-      height: 200%; /* Double the height for seamless looping */
+      width: 100%;
+      height: 100%;
       background: linear-gradient(
         45deg,
         #000022, /* Dark Blue */
@@ -121,7 +121,7 @@
         #000022  /* Dark Blue */
       );
       background-size: 400% 400%; /* Size of the gradient */
-      animation: moveGradient 8s linear infinite; /* Smooth and seamless */
+      animation: moveGradient 8s infinite linear; /* Animation for gradient */
       z-index: 0; /* Place it behind the stripes */
     }
 
@@ -152,10 +152,15 @@
       z-index: 2; /* Higher than the container background */
     }
 
+    /* Hide Title During Game */
+    h1.hide {
+      display: none;
+    }
+
     /* Setup Section */
     #setup {
       margin-bottom: 1rem;
-      display: block; /* Ensure setup section is visible by default */
+      display: block;
       position: relative; /* Ensure it's above the container background */
       z-index: 2; /* Higher than the container background */
     }
@@ -176,7 +181,6 @@
       border: none;
       margin-bottom: 1rem;
       width: 100%;
-      max-width: 100%;
     }
 
     #start-button {
@@ -210,6 +214,7 @@
       font-size: 2rem; /* Larger text */
       font-weight: 900; /* Bolder text */
       margin: 1rem 0;
+      color: #ffffff; /* White text */
     }
 
     /* Time's Up! Message */
@@ -231,7 +236,6 @@
       left: 50%;
       transform: translate(-50%, -50%);
       z-index: 1000;
-      white-space: nowrap;
     }
 
     .puzzle-container {
@@ -270,11 +274,22 @@
       object-fit: cover; /* Ensure the image fits nicely */
     }
 
+    /* Pre-rendered Space for Buttons */
+    .button-space {
+      height: 60px; /* Fixed height for the button space */
+      width: 100%;
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
     /* Score Input Buttons */
     .score-input {
-      display: flex;
+      display: none; /* Hidden by default */
       gap: 0.5rem;
-      margin-top: 1rem;
+      width: 100%;
+      max-width: 300px;
     }
 
     .score-input button {
@@ -286,7 +301,7 @@
       border-radius: 10px;
       cursor: pointer;
       transition: background 0.3s ease;
-      width: 100%;
+      width: 100%; /* Same size for both buttons */
     }
 
     .score-input .correct {
@@ -310,6 +325,7 @@
       margin-top: 1rem;
       font-size: 1.5rem; /* Larger text */
       font-weight: 900; /* Bolder text */
+      color: #ffffff; /* White text */
     }
 
     /* Round Counter */
@@ -317,6 +333,7 @@
       font-size: 1.5rem; /* Larger text */
       font-weight: 900; /* Bolder text */
       margin: 1rem 0;
+      color: #ffffff; /* White text */
     }
 
     /* End Game Button */
@@ -358,48 +375,7 @@
       background: #2980b9;
     }
 
-    /* Responsive Design */
-    @media (max-width: 480px) {
-      h1#game-title {
-        font-size: 2rem; /* Adjusted for smaller screens */
-      }
-
-      #setup label {
-        font-size: 1rem; /* Adjusted for smaller screens */
-      }
-
-      #setup input, #setup select {
-        font-size: 1rem; /* Adjusted for smaller screens */
-      }
-
-      #start-button, #end-game-button, #reset-game-button {
-        font-size: 1rem; /* Adjusted for smaller screens */
-      }
-
-      .silhouette {
-        width: 80%; /* Adjusted for smaller screens */
-        height: 40vh; /* Adjusted for smaller screens */
-      }
-
-      .score-input button {
-        padding: 0.6rem 0.8rem;
-      }
-    }
-
-    /* Hide elements during announcement */
-    .hide-on-end {
-      display: none;
-    }
-
-    /* Team-specific colors for announcement */
-    .red { color: #e74c3c; }
-    .blue { color: #3498db; }
-    .yellow { color: #f1c40f; }
-    .green { color: #2ecc71; }
-    .purple { color: #9b59b6; }
-    .orange { color: #e67e22; }
-
-    /* Announcement Styling */
+    /* Winner Announcement */
     .winner-announcement {
       font-size: 3rem; /* Larger text */
       font-weight: 900; /* Bolder text */
@@ -417,37 +393,28 @@
       border-radius: 10px;
     }
 
-    .score-list {
-      text-align: left;
-      margin: 0 auto;
-      max-width: 300px;
+    /* Score Table */
+    .score-table {
+      margin-top: 1rem;
       font-size: 1.5rem; /* Larger text */
       font-weight: 900; /* Bolder text */
-      z-index: 99;
+      text-align: left;
+      width: 100%;
+      max-width: 300px;
     }
 
-    .score-list ul {
+    .score-table ul {
       list-style-type: none;
       padding-left: 0;
     }
 
-    .score-list li {
+    .score-table li {
       margin: 0.5rem 0;
     }
 
-    /* GIF Animation Styling */
-    .gif-animation {
-      position: absolute;
-      top: 2.5%; /* Adjusted to 2.5% */
-      left: 50%;
-      transform: translateX(-50%);
-      width: 150px;
-      height: 150px;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      z-index: 1000;
-      pointer-events: none;
+    /* Hide elements during announcement */
+    .hide-on-end {
+      display: none;
     }
   </style>
 </head>
@@ -507,6 +474,13 @@
         <div class="silhouette" data-color="puzzle.png">
           <img src="kouti.png" alt="Tangram Silhouette">
         </div>
+        <!-- Pre-rendered Space for Buttons -->
+        <div class="button-space">
+          <div class="score-input">
+            <button class="correct" onclick="handleScoreInput(true)">Correct</button>
+            <button class="incorrect" onclick="handleScoreInput(false)">Incorrect</button>
+          </div>
+        </div>
       </div>
       <button id="end-game-button" onclick="endGame()">End Game</button>
       <button id="reset-game-button" onclick="resetGame()">Reset Game</button>
@@ -545,15 +519,6 @@
     const endGameButton = document.getElementById('end-game-button');
     const startButton = document.getElementById('start-button');
     let numberOfTeams = 1;
-    let celebrationInterval;
-    let tieGifIndex = 0;
-    let winnerGifIndex = 0;
-
-    // Tie GIFs
-    const tieGifs = ["t1.gif", "t2.gif", "t3.gif", "t4.gif"];
-
-    // Winner GIFs
-    const winnerGifs = ["w1.gif", "w2.gif", "w3.gif", "w4.gif", "w5.gif", "w6.gif"];
 
     // Update the team display with the correct color
     function updateTeamDisplay() {
@@ -569,8 +534,7 @@
 
       currentTeamDisplay.textContent = currentTeam;
       currentTeamDisplay.style.color = teamColor;
-      gameTitle.style.color = teamColor; // Update title color to match team
-      roundCounter.style.color = teamColor;
+      roundCounter.style.color = teamColor; // Update round counter color
     }
 
     // Start the game
@@ -588,13 +552,11 @@
       gameSection.style.display = "block";
       resetGameButton.style.display = "none";
       startButton.style.display = "none";
+      gameTitle.classList.add('hide'); // Hide title during the game
 
-      // Stop rainbow animation and set title color to match team
-      gameTitle.style.animation = "none";
       currentTeamIndex = 0;
       updateTeamDisplay();
-      gameTitle.textContent = "Tangram Challenge";
-      timeLeft = timerDuration * (timerDuration === 5 ? 1 : 60); // Handle 5 seconds
+      timeLeft = timerDuration * (timerDuration === 5 ? 1 : 60);
       startTimer();
     }
 
@@ -624,26 +586,14 @@
       silhouetteElement.innerHTML = `<img src="${colorImage}" alt="Tangram Color">`;
       clearInterval(timerInterval);
 
-      if (!document.querySelector('.score-input')) {
-        showScoreInput();
-      }
+      // Show the score input buttons
+      document.querySelector('.score-input').style.display = 'flex';
     });
-
-    // Show score input buttons
-    function showScoreInput() {
-      const scoreInput = `
-        <div class="score-input">
-          <button class="correct" onclick="handleScoreInput(true)">Correct</button>
-          <button class="incorrect" onclick="handleScoreInput(false)">Incorrect</button>
-        </div>
-      `;
-      document.querySelector('.puzzle-container').insertAdjacentHTML('beforeend', scoreInput);
-    }
 
     // Handle score input
     function handleScoreInput(isCorrect) {
       if (isCorrect) teamScores[currentTeamIndex]++;
-      document.querySelector('.puzzle-container').lastElementChild.remove();
+      document.querySelector('.score-input').style.display = 'none'; // Hide buttons after input
       nextRound();
     }
 
@@ -665,7 +615,7 @@
       currentPuzzleIndex = (currentPuzzleIndex + 1) % puzzles.length;
       silhouetteElement.innerHTML = `<img src="${puzzles[currentPuzzleIndex].silhouette}" alt="Tangram Silhouette">`;
       timesUpMessage.style.display = "none";
-      timeLeft = timerDuration * (timerDuration === 5 ? 1 : 60); // Handle 5 seconds
+      timeLeft = timerDuration * (timerDuration === 5 ? 1 : 60);
       startTimer();
     }
 
@@ -687,30 +637,20 @@
 
       if (winningTeams.length === 1) {
         const winningTeam = winningTeams[0];
-        let announcementColor = "";
-
-        if (winningTeam === "Red") announcementColor = "#e74c3c";
-        else if (winningTeam === "Blue") announcementColor = "#3498db";
-        else if (winningTeam === "Yellow") announcementColor = "#f1c40f";
-        else if (winningTeam === "Green") announcementColor = "#2ecc71";
-        else if (winningTeam === "Purple") announcementColor = "#9b59b6";
-        else if (winningTeam === "Orange") announcementColor = "#e67e22";
-
         gameTitle.innerHTML = `
           <div class="winner-announcement">
-            <span style="color: ${announcementColor}">${winningTeam} Won!</span>
+            <span style="color: ${winningTeam.toLowerCase()}">${winningTeam} Won!</span>
           </div>
         `;
-        triggerCelebration(false);
       } else {
         gameTitle.innerHTML = `
           <div class="winner-announcement">
             It's a Tie!
           </div>
         `;
-        triggerCelebration(true);
       }
 
+      // Add the score table
       const sortedTeams = teamColors
         .slice(0, numberOfTeams)
         .map((team, index) => ({ team, score: teamScores[index] }))
@@ -733,42 +673,16 @@
                   </li>`;
         })
         .join("");
-      gameTitle.insertAdjacentHTML(
-        "beforeend",
-        `<div class="score-list"><ul>${scoreList}</ul></div>`
-      );
 
+      const scoreTable = `
+        <div class="score-table">
+          <ul>${scoreList}</ul>
+        </div>
+      `;
+
+      gameTitle.insertAdjacentHTML('beforeend', scoreTable); // Add score table below the winner announcement
+      gameTitle.classList.remove('hide'); // Show title for winner announcement
       resetGameButton.style.display = "block";
-
-      if (winningTeams.length === 1) {
-        celebrationInterval = setInterval(() => {
-          confetti({
-            particleCount: 100,
-            spread: 70,
-            origin: { y: 0.6 },
-          });
-        }, 10000);
-      }
-    }
-
-    // Trigger celebration (winner or tie)
-    function triggerCelebration(isTie) {
-      const gif = isTie ? tieGifs[tieGifIndex % tieGifs.length] : winnerGifs[winnerGifIndex % winnerGifs.length];
-      if (isTie) tieGifIndex++;
-      else winnerGifIndex++;
-
-      const gifElement = document.createElement('div');
-      gifElement.className = 'gif-animation';
-      gifElement.style.backgroundImage = `url('${gif}')`;
-      document.body.appendChild(gifElement);
-
-      if (!isTie) {
-        confetti({
-          particleCount: 100,
-          spread: 70,
-          origin: { y: 0.6 },
-        });
-      }
     }
 
     // Reset the game
@@ -784,9 +698,8 @@
       gameSection.style.display = "none";
       resetGameButton.style.display = "none";
       startButton.style.display = "block";
+      gameTitle.classList.remove('hide'); // Show title on reset
       gameTitle.textContent = "Tangram Challenge";
-      gameTitle.style.color = "white";
-      gameTitle.style.animation = "rainbow-text 5s linear infinite"; // Restore rainbow animation
       silhouetteElement.innerHTML = `<img src="${puzzles[currentPuzzleIndex].silhouette}" alt="Tangram Silhouette">`;
 
       roundCounter.classList.remove('hide-on-end');
@@ -795,11 +708,6 @@
       endGameButton.classList.remove('hide-on-end');
       timerElement.classList.remove('hide-on-end');
       timesUpMessage.style.display = "none";
-
-      clearInterval(celebrationInterval);
-
-      const existingGif = document.querySelector('.gif-animation');
-      if (existingGif) existingGif.remove();
     }
 
     // End game button
