@@ -281,17 +281,15 @@
       width: 100%;
       margin-top: 1rem;
       display: flex;
-      justify-content: space-between; /* Space between buttons */
+      justify-content: center; /* Center the buttons */
       align-items: center;
-      padding: 0 10%; /* 10% gap from the left and right walls */
     }
 
     /* Score Input Buttons */
     .score-input {
       display: none; /* Hidden by default */
-      width: 100%;
-      max-width: 300px;
-      gap: 5%; /* 5% gap between buttons */
+      width: 80%; /* 100% - 10% (left) - 10% (right) */
+      justify-content: space-between; /* Space between buttons */
     }
 
     .score-input button {
@@ -303,7 +301,7 @@
       border-radius: 15px;
       cursor: pointer;
       transition: all 0.3s ease;
-      width: calc(75% / 2); /* Each button is (75/2)% width */
+      width: calc(37.5% - 2.5%); /* (75/2)% width minus half of the 5% gap */
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
       display: flex;
       justify-content: center;
@@ -559,12 +557,10 @@
 
     function triggerCelebration(isTie) {
       if (isTie) {
-        // Display tie GIF
         const tieGif = tieGifs[tieGifIndex % tieGifs.length];
         tieGifIndex++;
         displayGif(tieGif);
       } else {
-        // Display winner GIF and confetti
         const winnerGif = winnerGifs[winnerGifIndex % winnerGifs.length];
         winnerGifIndex++;
         displayGif(winnerGif);
