@@ -283,7 +283,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 1rem; /* Space between buttons */
+      gap: 5%; /* 5% gap between buttons */
+      padding: 0 10%; /* 10% gap from the walls */
     }
 
     /* Score Input Buttons */
@@ -302,7 +303,7 @@
       border-radius: 15px;
       cursor: pointer;
       transition: all 0.3s ease;
-      width: 20%; /* Fixed percentage of screen width */
+      width: calc(75% / 2); /* Each button is (75/2)% width */
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
       display: flex;
       justify-content: center;
@@ -357,7 +358,7 @@
       border-radius: 10px;
       cursor: pointer;
       transition: background 0.3s ease;
-      width: 100%;
+      width: 50%; /* Fixed 50% width */
     }
 
     #end-game-button:hover {
@@ -424,6 +425,20 @@
     /* Hide elements during announcement */
     .hide-on-end {
       display: none;
+    }
+
+    /* GIF Animation */
+    .gif-animation {
+      position: absolute;
+      top: 20%; /* Adjusted to position lower */
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 200px; /* Smaller GIF */
+      height: 200px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      z-index: 1000;
     }
   </style>
 </head>
@@ -528,6 +543,38 @@
     const endGameButton = document.getElementById('end-game-button');
     const startButton = document.getElementById('start-button');
     let numberOfTeams = 1;
+
+    // GIF Logic
+    const tieGifs = ["t1.gif", "t2.gif", "t3.gif", "t4.gif"];
+    const winnerGifs = ["w1.gif", "w2.gif", "w3.gif", "w4.gif", "w5.gif", "w6.gif"];
+    let tieGifIndex = 0;
+    let winnerGifIndex = 0;
+
+    function displayGif(gif) {
+      const gifElement = document.createElement('div');
+      gifElement.className = 'gif-animation';
+      gifElement.style.backgroundImage = `url('${gif}')`;
+      document.body.appendChild(gifElement);
+    }
+
+    function triggerCelebration(isTie) {
+      if (isTie) {
+        // Display tie GIF
+        const tieGif = tieGifs[tieGifIndex % tieGifs.length];
+        tieGifIndex++;
+        displayGif(tieGif);
+      } else {
+        // Display winner GIF and confetti
+        const winnerGif = winnerGifs[winnerGifIndex % winnerGifs.length];
+        winnerGifIndex++;
+        displayGif(winnerGif);
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 },
+        });
+      }
+    }
 
     // Update the team display with the correct color
     function updateTeamDisplay() {
@@ -651,18 +698,14 @@
             <span style="color: ${winningTeam.toLowerCase()}">${winningTeam} Won!</span>
           </div>
         `;
-        // Trigger confetti
-        confetti({
-          particleCount: 100,
-          spread: 70,
-          origin: { y: 0.6 },
-        });
+        triggerCelebration(false); // Trigger winner GIF and confetti
       } else {
         gameTitle.innerHTML = `
           <div class="winner-announcement">
             It's a Tie!
           </div>
         `;
+        triggerCelebration(true); // Trigger tie GIF
       }
 
       // Add the score table
@@ -708,6 +751,10 @@
       timeLeft = 60;
       timerDuration = 1;
       teamScores.fill(0);
+
+      // Remove any existing GIF
+      const existingGif = document.querySelector('.gif-animation');
+      if (existingGif) existingGif.remove();
 
       setupSection.style.display = "block";
       gameSection.style.display = "none";
