@@ -281,10 +281,9 @@
       width: 100%;
       margin-top: 1rem;
       display: flex;
-      justify-content: center;
+      justify-content: space-between; /* Space between buttons */
       align-items: center;
-      gap: 5%; /* 5% gap between buttons */
-      padding: 0 10%; /* 10% gap from the walls */
+      padding: 0 10%; /* 10% gap from the left and right walls */
     }
 
     /* Score Input Buttons */
@@ -292,6 +291,7 @@
       display: none; /* Hidden by default */
       width: 100%;
       max-width: 300px;
+      gap: 5%; /* 5% gap between buttons */
     }
 
     .score-input button {
@@ -430,11 +430,11 @@
     /* GIF Animation */
     .gif-animation {
       position: absolute;
-      top: 20%; /* Adjusted to position lower */
+      top: 5%; /* 5% distance from the top */
       left: 50%;
-      transform: translate(-50%, -50%);
-      width: 200px; /* Smaller GIF */
-      height: 200px;
+      transform: translate(-50%, 0);
+      width: 150px; /* Smaller GIF for mobile */
+      height: 150px;
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
@@ -632,6 +632,7 @@
         clearInterval(timerInterval);
         timesUpMessage.style.display = "block";
         timesUpSound.play();
+        timeLeft = 0; // Prevent negative numbers
       }
     }
 
@@ -684,7 +685,7 @@
       puzzleContainer.classList.add('hide-on-end');
       endGameButton.classList.add('hide-on-end');
       timerElement.classList.add('hide-on-end');
-      timesUpMessage.style.display = "none";
+      timesUpMessage.style.display = "none"; // Hide "Time's Up" message
 
       const maxScore = Math.max(...teamScores);
       const winningTeams = teamColors
