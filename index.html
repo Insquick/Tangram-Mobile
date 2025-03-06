@@ -257,10 +257,10 @@
       position: relative;
       background: #3e3e3e;
       padding: 10px;
-      width: 90%; /* 90% of the screen width */
-      height: 50vh; /* 50% of the screen height */
-      max-width: 90%;
-      aspect-ratio: 1 / 1; /* Ensure the silhouette is always square */
+      width: 210px; /* Fixed width */
+      height: 325px; /* Fixed height */
+      max-width: 100%; /* Ensure it doesn't exceed its container */
+      aspect-ratio: auto; /* Remove aspect-ratio to allow fixed dimensions */
     }
 
     .silhouette:hover {
