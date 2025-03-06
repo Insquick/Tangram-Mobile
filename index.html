@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Tangram Challenge</title>
   <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
@@ -20,6 +20,7 @@
       min-height: 100vh;
       overflow-y: auto;
       position: relative;
+      font-size: 16px; /* Base font size */
     }
 
     /* Diagonal Wave Background Animation (Slowed Down to 30s) */
@@ -70,6 +71,7 @@
       text-align: center;
       max-width: 90%;
       width: 100%;
+      height: 90vh; /* Bigger container height */
       margin: 2rem 0;
       display: flex;
       flex-direction: column;
@@ -257,8 +259,8 @@
       position: relative;
       background: #3e3e3e;
       padding: 10px;
-      width: 90%; /* 90% of the screen width */
-      height: 50vh; /* 50% of the screen height */
+      width: 80%; /* 80% of the bigger container width */
+      height: 70%; /* 70% of the bigger container height */
       max-width: 90%;
       aspect-ratio: 1 / 1; /* Ensure the silhouette is always square */
     }
@@ -289,7 +291,7 @@
     /* Score Input Buttons */
     .score-input {
       display: none; /* Hidden by default */
-      width: 80%; /* 100% - 10% (left) - 10% (right) */
+      width: 80%; /* 80% of the bigger container width */
       justify-content: space-between; /* Space between buttons */
       gap: 10px; /* Add gap between buttons */
     }
