@@ -257,7 +257,7 @@
       position: relative;
       background: #3e3e3e;
       padding: 10px;
-      width: 75%; /* 75% of the screen width */
+      width: 90%; /* 90% of the screen width */
       height: 50vh; /* 50% of the screen height */
       max-width: 90%;
       aspect-ratio: 1 / 1; /* Ensure the silhouette is always square */
@@ -269,11 +269,11 @@
     }
 
     .silhouette img {
-      width: 90%; /* Set width to 90% of the container */
-      height: auto; /* Maintain aspect ratio */
+      width: 100%; /* Fill the gray container */
+      height: 100%; /* Fill the gray container */
       display: block;
       border-radius: 10px;
-      object-fit: contain; /* Ensure the image fits nicely */
+      object-fit: cover; /* Ensure the image fills the container */
     }
 
     /* Pre-rendered Space for Buttons */
@@ -295,15 +295,15 @@
     }
 
     .score-input button {
-      padding: 1rem;
+      padding: 0.5rem; /* Shorter height */
       font-size: 2rem; /* Larger text */
       font-weight: 900; /* Bolder text */
-      color: white;
+      color: white; /* White text */
       border: none;
       border-radius: 15px;
       cursor: pointer;
       transition: all 0.3s ease;
-      width: 45%; /* Wider buttons */
+      width: calc(75% / 2); /* (75/2)% of the container width */
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
       display: flex;
       justify-content: center;
@@ -349,7 +349,7 @@
     /* End Game Button */
     #end-game-button {
       margin-top: 1rem;
-      padding: 0.8rem 1rem;
+      padding: 0.5rem; /* Shorter height */
       font-size: 1.2rem; /* Larger text */
       font-weight: 900; /* Bolder text */
       color: white;
@@ -358,7 +358,7 @@
       border-radius: 10px;
       cursor: pointer;
       transition: background 0.3s ease;
-      width: 25vw; /* Fixed 25% of viewport width */
+      width: 50%; /* 50% of the bigger container width */
     }
 
     #end-game-button:hover {
@@ -502,7 +502,7 @@
         </div>
       </div>
       <button id="end-game-button" onclick="endGame()">End Game</button>
-      <button id="reset-game-button" onclick="resetGame()">Reset Game</button>
+      <button id="reset-game-button" onclick="resetGame()">Play Again!</button>
     </div>
   </div>
 
