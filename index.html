@@ -257,8 +257,8 @@
       position: relative;
       background: #3e3e3e;
       padding: 10px;
-      width: 225px; /* Updated width */
-      height: 350px; /* Updated height */
+      width: 235px; /* Updated width */
+      height: 375px; /* Updated height */
       max-width: 100%; /* Ensure it doesn't exceed its container */
       aspect-ratio: auto; /* Remove aspect-ratio to allow fixed dimensions */
     }
@@ -280,7 +280,7 @@
     .button-space {
       height: auto; /* Adjusted height */
       width: 100%;
-      margin-top: 30px; /* Reduced vertical distance between image and buttons */
+      margin-top: 20px; /* Reduced vertical distance between image and buttons */
       display: flex;
       justify-content: center; /* Center the buttons */
       align-items: center;
@@ -309,6 +309,21 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      position: relative;
+    }
+
+    .score-input button::before {
+      content: "";
+      font-size: 2rem;
+      color: white;
+    }
+
+    .score-input .correct::before {
+      content: "✔"; /* Tick symbol */
+    }
+
+    .score-input .incorrect::before {
+      content: "✖"; /* Cross symbol */
     }
 
     .score-input .correct {
@@ -349,7 +364,7 @@
 
     /* End Game Button */
     #end-game-button {
-      margin-top: 30px; /* Reduced vertical distance between buttons and End Game button */
+      margin-top: 25px; /* Reduced vertical distance between buttons and End Game button */
       padding: 0.5rem; /* Shorter height */
       font-size: 1.2rem; /* Larger text */
       font-weight: 900; /* Bolder text */
@@ -359,7 +374,13 @@
       border-radius: 10px;
       cursor: pointer;
       transition: background 0.3s ease;
-      width: 50%; /* 50% of the bigger container width */
+      width: 130px; /* Updated width */
+      height: 30px; /* Updated height */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: auto;
+      margin-right: auto; /* Center the button horizontally */
     }
 
     #end-game-button:hover {
@@ -497,8 +518,8 @@
         <!-- Pre-rendered Space for Buttons -->
         <div class="button-space">
           <div class="score-input">
-            <button class="correct" onclick="handleScoreInput(true)">✔</button>
-            <button class="incorrect" onclick="handleScoreInput(false)">✖</button>
+            <button class="correct" onclick="handleScoreInput(true)"></button>
+            <button class="incorrect" onclick="handleScoreInput(false)"></button>
           </div>
         </div>
       </div>
