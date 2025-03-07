@@ -278,7 +278,7 @@
 
     /* Pre-rendered Space for Buttons */
     .button-space {
-      height: auto; /* Adjusted height */
+      height: 60px; /* Fixed height for pre-rendered space */
       width: 100%;
       margin-top: 20px; /* Reduced vertical distance between image and buttons */
       display: flex;
@@ -295,7 +295,7 @@
     }
 
     .score-input button {
-      padding: 0.5rem; /* Shorter height */
+      padding: 0; /* Remove padding */
       font-size: 2rem; /* Larger text */
       font-weight: 900; /* Bolder text */
       color: white; /* Ensure text is white */
@@ -303,8 +303,8 @@
       border-radius: 15px;
       cursor: pointer;
       transition: all 0.3s ease;
-      width: 150px; /* Updated width */
-      height: 50px; /* Updated height */
+      width: 140px; /* Updated width */
+      height: 40px; /* Updated height */
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
       display: flex;
       justify-content: center;
@@ -381,6 +381,10 @@
       align-items: center;
       margin-left: auto;
       margin-right: auto; /* Center the button horizontally */
+    }
+
+    #end-game-button.hide-on-end {
+      display: none; /* Hide during winner announcement */
     }
 
     #end-game-button:hover {
