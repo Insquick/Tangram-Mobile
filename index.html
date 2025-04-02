@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ALGORITHM MIND HACK</title>
+    <title>ALGORITHM PRISON BREAK</title>
     <style>
+        /* RADICAL NEW DESIGN */
         body {
             margin: 0;
             padding: 0;
-            background-color: #000;
-            overflow-x: hidden;
+            background: #000;
             min-height: 100vh;
             font-family: 'Arial Black', sans-serif;
+            overflow-x: hidden;
         }
         
         .reel-container {
@@ -19,32 +20,101 @@
             width: 100%;
             max-width: 360px;
             height: 640px;
-            background: black;
-            overflow: hidden;
             margin: 0 auto;
+            overflow: hidden;
         }
-        
-        .algorithm-container {
+
+        /* ORIGINAL PATTERNS */
+        .pattern {
             position: absolute;
             width: 100%;
             height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .algorithm {
             opacity: 0;
-            position: absolute;
-            transition: opacity 0.3s ease-in-out;
+            transition: opacity 0.2s linear;
         }
-        
-        .algorithm.active {
-            opacity: 1;
+        .pattern.active { opacity: 1; }
+
+        #pattern1 { /* Quantum Ripple */
+            background: 
+                radial-gradient(circle, transparent 50%, #00fffc 150%),
+                repeating-conic-gradient(#ff00ff 0% 5%, #0000 5% 10%);
+            animation: 
+                ripple 3s infinite alternate,
+                hueShift 5s infinite;
         }
-        
-        /* REST OF YOUR ORIGINAL CSS EXACTLY AS WAS */
-        /* Text Overlay Styles */
+
+        #pattern2 { /* Data Storm */
+            display: grid;
+            grid-template-columns: repeat(15, 1fr);
+            background: #000;
+        }
+        .data-stream {
+            animation: dataFall linear infinite;
+            color: lime;
+            font-family: monospace;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        #pattern3 { /* Cyber Mandala */
+            background: 
+                conic-gradient(from 90deg at 50% 50%, 
+                    #ff00ff, #00fffc, #ff00ff, #00fffc, #ff00ff);
+            mask: radial-gradient(circle, black 30%, transparent 70%);
+            animation: 
+                spin 8s linear infinite,
+                pulse 1.5s infinite alternate;
+        }
+
+        #pattern4 { /* Glitch Cubes */
+            background: 
+                linear-gradient(45deg, #000 25%, #ff00ff 25% 50%, #000 50% 75%, #ff00ff 75%);
+            background-size: 20px 20px;
+            animation: 
+                glitchMove 0.1s steps(2) infinite,
+                hueShift 3s infinite;
+        }
+
+        #pattern5 { /* Neural Web */
+            background: 
+                radial-gradient(ellipse at center, #00fffc00 0%, #00fffc40 70%),
+                repeating-linear-gradient(45deg, #ff00ff 0px 2px, #0000 2px 10px),
+                repeating-linear-gradient(-45deg, #ff00ff 0px 2px, #0000 2px 10px);
+            animation: pulse 2s infinite alternate;
+        }
+
+        #pattern6 { /* Singularity Pulse */
+            background: radial-gradient(circle at center, #ff00ff 0%, #000 70%);
+            animation: 
+                pulse 0.8s infinite alternate,
+                hueShift 2s infinite;
+        }
+
+        /* CUSTOM ANIMATIONS */
+        @keyframes ripple {
+            0% { transform: scale(1); opacity: 0.7; }
+            100% { transform: scale(1.3); opacity: 1; }
+        }
+        @keyframes dataFall {
+            0% { transform: translateY(-100%); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+        @keyframes glitchMove {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(3px); }
+        }
+        @keyframes hueShift {
+            100% { filter: hue-rotate(360deg); }
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(1.1); opacity: 1; }
+        }
+
+        /* TEXT OVERLAYS (PRISON BREAK THEME) */
         .text-overlay {
             position: absolute;
             width: 100%;
@@ -53,352 +123,211 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 100;
-            pointer-events: none;
-            color: white;
             text-align: center;
             opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-            padding: 20px;
-            box-sizing: border-box;
+            transition: opacity 0.2s linear;
+            z-index: 100;
         }
-        
-        .text-overlay.active {
-            opacity: 1;
-        }
-        
+        .text-overlay.active { opacity: 1; }
         .main-text {
             font-size: 32px;
             font-weight: 900;
             text-transform: uppercase;
             margin: 0;
             text-shadow: 0 0 10px currentColor;
-            line-height: 1.2;
+            animation: glitch 1s infinite alternate;
         }
-        
         .sub-text {
             font-size: 18px;
             font-weight: 900;
             margin-top: 15px;
             text-shadow: 0 0 5px currentColor;
-            line-height: 1.2;
+            animation: flicker 0.5s infinite alternate;
         }
-        
-        /* Matrix End Screen - Integrated into Algorithm 5 */
-        .matrix-cta {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 150;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
+        @keyframes glitch {
+            0%, 100% { transform: translate(0); }
+            25% { transform: translate(-2px, 2px); }
+            75% { transform: translate(2px, -2px); }
         }
-        
-        .matrix-cta.active {
-            opacity: 1;
-        }
-        
-        .cta-text {
-            color: lime;
-            font-size: 24px;
-            font-weight: bold;
-            text-align: center;
-            text-shadow: 0 0 10px #00ff00;
-            animation: pulse 1s infinite alternate;
-            margin-bottom: 20px;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 15px;
-            border-radius: 5px;
-            max-width: 80%;
-        }
-        
-        /* Text Animation Effects */
-        .text-tremble {
-            animation: tremble 0.1s infinite alternate;
-        }
-        
-        @keyframes tremble {
-            0% { transform: translate(-1px, -1px) rotate(-0.5deg); }
-            25% { transform: translate(2px, 0) rotate(0.5deg); }
-            50% { transform: translate(-1px, 1px) rotate(-0.5deg); }
-            75% { transform: translate(1px, -1px) rotate(0.5deg); }
-            100% { transform: translate(0, 0) rotate(0); }
-        }
-        
-        .text-pulse {
-            animation: pulse 0.8s infinite alternate;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.8; }
-            100% { transform: scale(1.05); opacity: 1; }
-        }
-        
-        .text-glitch {
-            position: relative;
-        }
-        
-        .text-glitch::before, .text-glitch::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-        
-        .text-glitch::before {
-            color: cyan;
-            z-index: -1;
-            animation: glitch-effect 3s infinite;
-        }
-        
-        .text-glitch::after {
-            color: magenta;
-            z-index: -2;
-            animation: glitch-effect 2s infinite reverse;
-        }
-        
-        @keyframes glitch-effect {
-            0% { transform: translate(0); }
-            20% { transform: translate(-3px, 3px); }
-            40% { transform: translate(-3px, -3px); }
-            60% { transform: translate(3px, 3px); }
-            80% { transform: translate(3px, -3px); }
-            100% { transform: translate(0); }
-        }
-        
-        .text-flicker {
-            animation: flicker 0.1s infinite alternate;
-        }
-        
         @keyframes flicker {
-            0% { opacity: 1; }
-            50% { opacity: 0.7; }
-            100% { opacity: 1; }
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
         }
-        
-        .text-shake {
-            animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) infinite both;
-        }
-        
-        @keyframes shake {
-            0%, 100% {transform: translateX(0);}
-            10%, 30%, 50%, 70%, 90% {transform: translateX(-5px);}
-            20%, 40%, 60%, 80% {transform: translateX(5px);}
-        }
-        
-        /* Algorithm Styles */
-        #algorithm1 {
-            width: 100%;
-            height: 100%;
-            background: 
-                linear-gradient(rgba(255, 0, 255, 0.3) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 0, 255, 0.3) 1px, transparent 1px),
-                linear-gradient(rgba(0, 255, 255, 0.2) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 255, 255, 0.2) 1px, transparent 1px);
-            background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
-            animation: pulse1 1s infinite alternate;
-        }
-        
-        @keyframes pulse1 {
-            0% { filter: brightness(1); }
-            100% { filter: brightness(1.5); }
-        }
-        
-        #algorithm2 {
-            width: 280px;
-            height: 280px;
-            background: conic-gradient(
-                from 0deg,
-                #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000
-            );
-            border-radius: 50%;
-            animation: spin 2s linear infinite, pulse2 1.5s infinite alternate;
-        }
-        
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
-        @keyframes pulse2 {
-            0% { transform: scale(1) rotate(0deg); }
-            50% { transform: scale(1.2) rotate(180deg); }
-            100% { transform: scale(1) rotate(360deg); }
-        }
-        
-        #algorithm3 {
-            width: 100%;
-            height: 100%;
-            background: 
-                linear-gradient(45deg, black 25%, transparent 25%) -50px 0,
-                linear-gradient(-45deg, black 25%, transparent 25%) -50px 0,
-                linear-gradient(45deg, transparent 75%, #ff00ff 75%),
-                linear-gradient(-45deg, transparent 75%, #ff00ff 75%);
-            background-size: 100px 100px;
-            animation: slide 8s linear infinite;
-        }
-        
-        @keyframes slide {
-            from { background-position: 0 0, 0 0, 0 0, 0 0; }
-            to { background-position: 200px 0, 200px 0, 200px 0, 200px 0; }
-        }
-        
-        #algorithm4 {
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(
-                circle at center,
-                rgba(0, 255, 255, 0.8) 0%,
-                rgba(0, 100, 255, 0.6) 30%,
-                rgba(255, 0, 255, 0.4) 60%,
-                rgba(0, 0, 0, 0) 90%
-            );
-            animation: plasma 1.5s ease-in-out infinite alternate;
-        }
-        
-        @keyframes plasma {
-            0% { transform: scale(1); opacity: 0.8; }
-            50% { transform: scale(1.5); opacity: 1; }
-            100% { transform: scale(1); opacity: 0.8; }
-        }
-        
-        #algorithm5 {
-            width: 100%;
-            height: 100%;
-            background: black;
-            color: lime;
-            font-family: monospace;
-            font-size: 16px;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
-            overflow: hidden;
-        }
-        
-        .binary-digit {
-            animation: fall linear infinite;
-            animation-duration: calc(var(--duration) * 1s);
-            animation-delay: calc(var(--delay) * 1s);
-        }
-        
-        @keyframes fall {
-            0% { transform: translateY(-100%); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(100vh); opacity: 0; }
+
+        /* START BUTTON */
+        #startButton {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #ff00ff;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            z-index: 200;
+            animation: pulse 1.5s infinite;
         }
     </style>
 </head>
 <body>
+    <button id="startButton">BEGIN ESCAPE</button>
+    
     <div class="reel-container">
-        <div class="algorithm-container">
-            <div id="algorithm1" class="algorithm"></div>
-            <div id="algorithm2" class="algorithm"></div>
-            <div id="algorithm3" class="algorithm"></div>
-            <div id="algorithm4" class="algorithm"></div>
-            <div id="algorithm5" class="algorithm"></div>
-        </div>
+        <!-- ORIGINAL PATTERNS -->
+        <div id="pattern1" class="pattern"></div>
+        <div id="pattern2" class="pattern"></div>
+        <div id="pattern3" class="pattern"></div>
+        <div id="pattern4" class="pattern"></div>
+        <div id="pattern5" class="pattern"></div>
+        <div id="pattern6" class="pattern"></div>
 
-        <!-- Continuous Story Text Overlays -->
+        <!-- PRISON BREAK TEXT OVERLAYS -->
         <div class="text-overlay" id="text1">
-            <h1 class="main-text text-tremble" style="color: #ff00ff;">DON'T LOOK AWAY</h1>
-            <p class="sub-text text-pulse" style="color: cyan;">THE ALGORITHM SEES YOU</p>
+            <h1 class="main-text" style="color: #ff00ff;">YOU'RE TRAPPED</h1>
+            <p class="sub-text" style="color: cyan;">THE ALGORITHM OWNS YOU</p>
         </div>
         
         <div class="text-overlay" id="text2">
-            <h1 class="main-text text-glitch" data-text="IT'S LEARNING" style="color: yellow;">IT'S LEARNING</h1>
-            <p class="sub-text text-flicker" style="color: magenta;">YOUR BRAINWAVES</p>
+            <h1 class="main-text" style="color: lime;">IT'S FEEDING ON YOU</h1>
+            <p class="sub-text" style="color: magenta;">EVERY SCROLL STRENGTHENS IT</p>
         </div>
         
         <div class="text-overlay" id="text3">
-            <h1 class="main-text text-shake" style="color: lime;">RESISTANCE IS USELESS</h1>
-            <p class="sub-text" style="color: white; animation: glitch-effect 1s infinite;">YOUR MIND IS BEING OPTIMIZED</p>
+            <h1 class="main-text" style="color: red;">SYSTEM FAILURE</h1>
+            <p class="sub-text" style="color: yellow;">EXPLOIT THE GLITCH</p>
         </div>
         
         <div class="text-overlay" id="text4">
-            <h1 class="main-text" style="color: cyan; text-shadow: 0 0 20px cyan; animation: pulse 0.3s infinite alternate;">YOU'RE ALMOST THERE</h1>
-            <p class="sub-text" style="color: magenta; animation: tremble 0.1s infinite;">JUST A FEW MORE SECONDS...</p>
+            <h1 class="main-text" style="color: cyan;">ESCAPE PATH OPEN</h1>
+            <p class="sub-text" style="color: #ff00ff;">FOCUS ON THE PORTAL</p>
         </div>
         
         <div class="text-overlay" id="text5">
-            <h1 class="main-text text-glitch" data-text="PROCESS COMPLETE" style="color: lime;">PROCESS COMPLETE</h1>
-            <p class="sub-text text-flicker" style="color: cyan;">YOU ARE NOW UPDATED</p>
+            <h1 class="main-text" style="color: yellow;">WARNING: THEY SEE YOU</h1>
+            <p class="sub-text" style="color: red;">BREAK FREE NOW</p>
         </div>
         
-        <!-- Matrix CTA (appears during algorithm5) -->
-        <div class="matrix-cta" id="matrixCTA">
-            <div class="cta-text">LIKE AND FOLLOW FOR MORE MIND BENDING!</div>
+        <div class="text-overlay" id="text6">
+            <h1 class="main-text" style="color: white;">YOU'RE ALMOST OUT</h1>
+            <p class="sub-text" style="color: lime;">DON'T LET THEM PULL YOU BACK</p>
         </div>
     </div>
 
     <script>
-        const algorithms = document.querySelectorAll('.algorithm');
-        const texts = document.querySelectorAll('.text-overlay');
-        const matrixCTA = document.getElementById('matrixCTA');
-        let currentIndex = 0;
-        const DURATION = 2500; // 2.5 seconds per scene
-        const CTA_DELAY = 12500; // Show CTA at 12.5 seconds (5th scene)
-        const TOTAL_DURATION = 15000; // 15 second reel
-        
-        // Generate binary rain digits
-        const algorithm5 = document.getElementById('algorithm5');
-        for (let i = 0; i < 150; i++) {
-            const digit = document.createElement('div');
-            digit.className = 'binary-digit';
-            digit.textContent = Math.random() > 0.5 ? '1' : '0';
-            digit.style.setProperty('--duration', Math.random() * 3 + 2);
-            digit.style.setProperty('--delay', Math.random() * 3);
-            algorithm5.appendChild(digit);
+        // Generate data storm (pattern2)
+        const dataStorm = document.getElementById('pattern2');
+        for (let i = 0; i < 120; i++) {
+            const stream = document.createElement('div');
+            stream.className = 'data-stream';
+            stream.textContent = Math.random() > 0.5 ? '01' : '10';
+            stream.style.animationDuration = `${Math.random() * 2 + 3}s`;
+            stream.style.animationDelay = `${Math.random() * 5}s`;
+            dataStorm.appendChild(stream);
         }
-        
-        // Show first algorithm and text immediately
-        algorithms[currentIndex].classList.add('active');
-        texts[currentIndex].classList.add('active');
-        
-        const interval = setInterval(() => {
-            // Hide current
-            algorithms[currentIndex].classList.remove('active');
-            texts[currentIndex].classList.remove('active');
+
+        // DEEP VOICE CONFIGURATION
+        const DEEP_VOICE = {
+            pitch: 0.5,  // Lower = deeper
+            rate: 0.85,  // Slower = more ominous
+            volume: 1.2  // Louder
+        };
+
+        // NARRATION SCRIPT (PRISON BREAK THEME)
+        const NARRATION = [
+            { text: "You're being manipulated!", time: 0 },
+            { text: "The algorithm is designed to keep you trapped!", time: 2500 },
+            { text: "It feeds on your attention!", time: 5000 },
+            { text: "Find the glitch in the system!", time: 7500 },
+            { text: "You must break free now!", time: 10000 },
+            { text: "Before it pulls you back in!", time: 12500 }
+        ];
+
+        // Initialize voices
+        function setupVoice() {
+            return new Promise(resolve => {
+                let attempts = 0;
+                const checkVoices = () => {
+                    const voices = window.speechSynthesis.getVoices();
+                    if (voices.length > 0) {
+                        resolve(voices);
+                    } else if (attempts++ < 10) {
+                        setTimeout(checkVoices, 100);
+                    } else {
+                        resolve([]);
+                    }
+                };
+                checkVoices();
+            });
+        }
+
+        // Speak with deep voice
+        function speakDeep(text) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.pitch = DEEP_VOICE.pitch;
+            utterance.rate = DEEP_VOICE.rate;
+            utterance.volume = DEEP_VOICE.volume;
             
-            // Move to next
-            currentIndex = (currentIndex + 1) % algorithms.length;
+            // Auto-select deepest available voice
+            const voices = window.speechSynthesis.getVoices();
+            const deepVoice = voices.find(v => v.name.includes('Microsoft David')) || 
+                             voices.find(v => v.lang.includes('en-') && v.name.includes('Male'));
             
-            // Show next
-            algorithms[currentIndex].classList.add('active');
-            texts[currentIndex].classList.add('active');
+            if (deepVoice) utterance.voice = deepVoice;
             
-            // Random emergency flash
-            if(Math.random() > 0.7) {
-                document.body.style.backgroundColor = 'white';
-                setTimeout(() => {
-                    document.body.style.backgroundColor = 'black';
-                }, 50);
-            }
+            // Add distortion effect
+            utterance.onstart = () => {
+                document.body.style.backgroundColor = '#ff00ff33';
+                setTimeout(() => document.body.style.backgroundColor = '#000', 300);
+            };
             
-        }, DURATION);
-        
-        // Show CTA during matrix scene
-        setTimeout(() => {
-            matrixCTA.classList.add('active');
-        }, CTA_DELAY);
-        
-        // Perfect loop reset
-        setTimeout(() => {
-            // Reset everything (for perfect looping)
-            algorithms[currentIndex].classList.remove('active');
-            texts[currentIndex].classList.remove('active');
-            matrixCTA.classList.remove('active');
+            window.speechSynthesis.speak(utterance);
+        }
+
+        // Start everything
+        document.getElementById('startButton').addEventListener('click', async function() {
+            this.remove();
+            await setupVoice();
             
-            // Restart from beginning
-            currentIndex = 0;
-            algorithms[currentIndex].classList.add('active');
-            texts[currentIndex].classList.add('active');
-        }, TOTAL_DURATION);
+            // Start animations
+            const patterns = ['pattern1', 'pattern2', 'pattern3', 'pattern4', 'pattern5', 'pattern6'];
+            const texts = ['text1', 'text2', 'text3', 'text4', 'text5', 'text6'];
+            let currentIndex = 0;
+            
+            document.getElementById(patterns[0]).classList.add('active');
+            document.getElementById(texts[0]).classList.add('active');
+            
+            const interval = setInterval(() => {
+                document.getElementById(patterns[currentIndex]).classList.remove('active');
+                document.getElementById(texts[currentIndex]).classList.remove('active');
+                
+                currentIndex = (currentIndex + 1) % patterns.length;
+                document.getElementById(patterns[currentIndex]).classList.add('active');
+                document.getElementById(texts[currentIndex]).classList.add('active');
+                
+                if(Math.random() > 0.6) {
+                    document.body.style.backgroundColor = 'white';
+                    setTimeout(() => document.body.style.backgroundColor = 'black', 30);
+                }
+            }, 2500);
+            
+            // Start narration
+            NARRATION.forEach(line => {
+                setTimeout(() => speakDeep(line.text), line.time);
+            });
+            
+            // End after 15s
+            setTimeout(() => {
+                clearInterval(interval);
+            }, 15000);
+        });
+
+        // Preload voices
+        window.speechSynthesis.onvoiceschanged = setupVoice;
+        setupVoice();
     </script>
 </body>
 </html>
