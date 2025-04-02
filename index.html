@@ -5,16 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ALGORITHM PRISON BREAK</title>
     <style>
+        /* SAFE ZONES FOR SOCIAL MEDIA */
+        :root {
+            --safe-top: 80px;
+            --safe-bottom: 80px;
+        }
+        
         body {
             margin: 0;
             padding: 0;
             background: #000;
+            min-height: 200vh; /* Scrollable page */
+            font-family: 'Arial Black', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .instructions {
             height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            font-family: 'Arial Black', sans-serif;
-            overflow: hidden;
+            text-align: center;
+            color: #ff00ff;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .instructions h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #ff00ff;
         }
         
         .reel-container {
@@ -22,7 +43,9 @@
             width: 100%;
             max-width: 360px;
             height: 640px;
+            margin: 0 auto 100vh;
             overflow: hidden;
+            border: 2px solid #ff00ff;
         }
 
         /* ORIGINAL PATTERNS */
@@ -115,11 +138,12 @@
             100% { transform: scale(1.1); opacity: 1; }
         }
 
-        /* TEXT OVERLAYS */
+        /* TEXT OVERLAYS - POSITIONED IN SAFE ZONES */
         .text-overlay {
             position: absolute;
             width: 100%;
-            height: 100%;
+            height: calc(100% - var(--safe-top) - var(--safe-bottom));
+            top: var(--safe-top);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -128,10 +152,12 @@
             opacity: 0;
             transition: opacity 0.3s ease-in-out;
             z-index: 100;
+            padding: 0 20px;
+            box-sizing: border-box;
         }
         .text-overlay.active { opacity: 1; }
         .main-text {
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 900;
             text-transform: uppercase;
             margin: 0;
@@ -139,9 +165,9 @@
             animation: glitch 1s infinite alternate;
         }
         .sub-text {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 900;
-            margin-top: 15px;
+            margin-top: 10px;
             text-shadow: 0 0 5px currentColor;
             animation: flicker 0.5s infinite alternate;
         }
@@ -189,6 +215,11 @@
     </style>
 </head>
 <body>
+    <div class="instructions">
+        <h1>SCROLL DOWN TO BEGIN</h1>
+        <p>Position your recording, then click BEGIN ESCAPE</p>
+    </div>
+    
     <div class="reel-container">
         <!-- ORIGINAL PATTERNS -->
         <div id="pattern1" class="pattern"></div>
@@ -198,7 +229,7 @@
         <div id="pattern5" class="pattern"></div>
         <div id="pattern6" class="pattern"></div>
 
-        <!-- PRISON BREAK TEXT OVERLAYS -->
+        <!-- PRISON BREAK TEXT OVERLAYS (IN SAFE ZONES) -->
         <div class="text-overlay" id="text1">
             <h1 class="main-text" style="color: #ff00ff;">YOU'RE TRAPPED</h1>
             <p class="sub-text" style="color: cyan;">THE ALGORITHM OWNS YOU</p>
@@ -245,33 +276,29 @@
             dataStorm.appendChild(stream);
         }
 
+        // MOBILE VOICE FIX
+        let voiceEnabled = false;
+        function enableVoice() {
+            voiceEnabled = true;
+            // iOS requires this to be triggered by user gesture
+            const silentAudio = new Audio();
+            silentAudio.src = 'data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU...';
+            silentAudio.play().then(() => {
+                silentAudio.remove();
+            }).catch(e => console.log("Voice enabled"));
+        }
+
         // DEEP VOICE CONFIGURATION
         const DEEP_VOICE = {
-            pitch: 0.5,  // Lower = deeper
-            rate: 0.85,  // Slower = more ominous
-            volume: 1.2  // Louder
+            pitch: 0.5,
+            rate: 0.85,
+            volume: 1.2
         };
-
-        // Initialize voices
-        function setupVoice() {
-            return new Promise(resolve => {
-                let attempts = 0;
-                const checkVoices = () => {
-                    const voices = window.speechSynthesis.getVoices();
-                    if (voices.length > 0) {
-                        resolve(voices);
-                    } else if (attempts++ < 10) {
-                        setTimeout(checkVoices, 100);
-                    } else {
-                        resolve([]);
-                    }
-                };
-                checkVoices();
-            });
-        }
 
         // Speak with deep voice
         function speakDeep(text) {
+            if (!voiceEnabled) return;
+            
             const utterance = new SpeechSynthesisUtterance(text);
             utterance.pitch = DEEP_VOICE.pitch;
             utterance.rate = DEEP_VOICE.rate;
@@ -295,6 +322,7 @@
 
         // Start everything
         document.getElementById('startButton').addEventListener('click', async function() {
+            enableVoice(); // Enable voice on user action
             this.style.display = 'none';
             const countdown = document.getElementById('countdown');
             
@@ -310,13 +338,11 @@
             await new Promise(r => setTimeout(r, 300));
             countdown.style.opacity = '0';
             
-            await setupVoice();
-            
             // Start animations and narration
             const patterns = ['pattern1', 'pattern2', 'pattern3', 'pattern4', 'pattern5', 'pattern6'];
             const texts = ['text1', 'text2', 'text3', 'text4', 'text5', 'text6'];
             
-            // PERFECTLY TIMED NARRATION (each at pattern switch)
+            // PERFECTLY TIMED NARRATION
             const NARRATION = [
                 { text: "You're being manipulated!", time: 0 },
                 { text: "The algorithm is designed to keep you trapped!", time: 2500 },
@@ -364,8 +390,9 @@
         });
 
         // Preload voices
-        window.speechSynthesis.onvoiceschanged = setupVoice;
-        setupVoice();
+        window.speechSynthesis.onvoiceschanged = function() {
+            console.log("Voices loaded");
+        };
     </script>
 </body>
 </html>
