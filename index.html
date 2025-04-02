@@ -2,22 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ALGORITHM MIND HACK</title>
     <style>
         body {
             margin: 0;
             padding: 0;
             background-color: #000;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            width: 100vw;
-            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-            position: fixed;
-            touch-action: manipulation;
+            overflow-x: hidden;
+            min-height: 100vh;
+            font-family: 'Arial Black', sans-serif;
         }
         
         .reel-container {
@@ -25,10 +19,9 @@
             width: 100%;
             max-width: 360px;
             height: 640px;
-            max-height: 100vh;
             background: black;
             overflow: hidden;
-            margin: auto;
+            margin: 0 auto;
         }
         
         .algorithm-container {
@@ -44,13 +37,13 @@
             opacity: 0;
             position: absolute;
             transition: opacity 0.3s ease-in-out;
-            -webkit-backface-visibility: hidden;
         }
         
         .algorithm.active {
             opacity: 1;
         }
         
+        /* REST OF YOUR ORIGINAL CSS EXACTLY AS WAS */
         /* Text Overlay Styles */
         .text-overlay {
             position: absolute;
@@ -85,11 +78,10 @@
         
         .sub-text {
             font-size: 18px;
-            font-weight: 900; /* Made bolder (changed from normal to 900) */
+            font-weight: 900;
             margin-top: 15px;
             text-shadow: 0 0 5px currentColor;
             line-height: 1.2;
-            text-transform: uppercase; /* Added uppercase for more impact */
         }
         
         /* Matrix End Screen - Integrated into Algorithm 5 */
@@ -407,11 +399,6 @@
             algorithms[currentIndex].classList.add('active');
             texts[currentIndex].classList.add('active');
         }, TOTAL_DURATION);
-        
-        // Prevent zooming and scrolling on iOS
-        document.addEventListener('touchmove', function(e) {
-            e.preventDefault();
-        }, { passive: false });
     </script>
 </body>
 </html>
